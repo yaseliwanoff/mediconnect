@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Hospital{% endblock %}
+
+{% block body %}
+{% for doctor in doctors %}
+    <img src="{{ doctor.photo.url }}" alt="Doctor photo" class="doctor-photo" style="width: 50px;">
+    <a href="{% url 'DocInfo' doctor_id=doctor.id %}">{{ doctor.first_name }}</a>
+{% endfor %}
+{% endblock %}
