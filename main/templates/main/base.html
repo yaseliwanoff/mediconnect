@@ -9,6 +9,14 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+{% if user.is_authenticated %}
+    <p>{{ user.username }}</p>
+    <a href="{% url 'Logout' %}">Logout</a>
+{% else %}
+    <a href="{% url 'Login' %}">Login</a>
+    <a href="{% url 'Register' %}">Register</a>
+{% endif %}
+
 {% block body %}
 {% endblock %}
 </body>

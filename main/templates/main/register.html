@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block body %}
+<div class="container">
+  <div style="height: 600px;" class="register-box">
+    <h1 class="register__title">Registration</h1><br>
+    <form method="post" class="register-form">
+      {% csrf_token %}
+        {% for f in form %}
+          <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label> {{ f }}
+          <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        <button type="submit">Registration</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

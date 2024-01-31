@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.shortcuts import redirect, get_object_or_404
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout
 from .models import *
-from .forms import AppointmentForm
+from .forms import AppointmentForm, RegisterUserForm, AuthenticationForm
+from django.urls import reverse_lazy
 
 
 class DoctorList(ListView):
@@ -34,3 +37,31 @@ class DoctorInfo(DetailView):
         if form.is_valid():
             form.save()
         return self.get(request, *args, **kwargs)
+
+
+class RegisterFormView(CreateView):
+    form_class = RegisterUserForm
+    model = User
+    success_url = reverse_lazy('Login')
+    template_name = 'main/register.html'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super(RegisterFormView, self).form_invalid(form)
+
+
+class LoginUserView(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'main/login.html'
+    success_url = reverse_lazy('Home')
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+
+def my_logout_view(request):
+    logout(request)
+    return redirect('Home')

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -28,20 +29,10 @@ class Doctor(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-class Patient(models.Model):
-    first_name = models.CharField(verbose_name='First name', max_length=80)
-    last_name = models.CharField(verbose_name='Last name', max_length=80)
-    phone_number = models.CharField(verbose_name='Phone number', max_length=18)
-    email = models.EmailField(verbose_name='Email')
-
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
-
-
 class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     appointment_datetime = models.ForeignKey(AppointmentTime, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Appointment with {self.doctor} on {self.appointment_datetime}"
