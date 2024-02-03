@@ -21,11 +21,13 @@ class LoginUserForm(AuthenticationForm):
 
 
 class AppointmentForm(forms.ModelForm):
-    appointment_datetime = forms.ModelChoiceField(queryset=AppointmentTime.objects.all(), empty_label='Select your appointment time')
+    appointment_datetime = forms.ModelChoiceField(queryset=AppointmentTime.objects.all(),
+                                                  empty_label='Select your appointment time')
 
     class Meta:
         model = Appointment
-        fields = ['appointment_datetime', 'doctor', 'user']
+        fields = ['appointment_datetime']
 
-    def __str__(self):
-        return str(self.appointment_datetime)
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)

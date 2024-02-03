@@ -24,18 +24,29 @@ class DoctorInfo(DetailView):
     pk_url_kwarg = 'doctor_id'
     success_url = 'DoctorList'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_initial(self):
         doctor_id = self.kwargs['doctor_id']
         doctor = get_object_or_404(Doctor, id=doctor_id)
-        patient = None
-        context['form'] = AppointmentForm(initial={'doctor': doctor, 'patient': patient})
+        return {'doctor': doctor, 'user': self.request.user}
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = AppointmentForm(initial=self.get_initial())
         return context
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, initial=self.get_initial())
+        # Получаем объект доктора из базы данных
+        doctor_id = self.kwargs['doctor_id']
+        doctor = get_object_or_404(Doctor, id=doctor_id)
+        # Заполняем поле доктора в форме
+        form.instance.doctor = doctor
+        # Заполняем поле пользователя в форме
+        form.instance.user = self.request.user
+
         if form.is_valid():
             form.save()
+
         return self.get(request, *args, **kwargs)
 
 
