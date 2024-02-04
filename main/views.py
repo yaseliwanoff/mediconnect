@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView
@@ -76,3 +77,19 @@ class LoginUserView(LoginView):
 def my_logout_view(request):
     logout(request)
     return redirect('Home')
+
+
+class UserAppointmentsListView(LoginRequiredMixin, ListView):
+    template_name = 'main/user-appointments.html'
+    context_object_name = 'appointments'
+    paginate_by = 10  # Число записей на странице
+
+    def get_queryset(self):
+        # Получаем записи, относящиеся к текущему пользователю
+        return Appointment.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Добавляем все возможные специализации врачей в контекст
+        context['specializations'] = SpecializationCategory.objects.all()
+        return context

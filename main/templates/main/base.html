@@ -12,6 +12,7 @@
 {% if user.is_authenticated %}
     <p>{{ user.username }}</p>
     <a href="{% url 'Logout' %}">Logout</a>
+    <a href="{% url 'UserAppointments' %}">My appointments</a>
 {% else %}
     <a href="{% url 'Login' %}">Login</a>
     <a href="{% url 'Register' %}">Register</a>

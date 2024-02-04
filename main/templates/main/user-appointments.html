@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}My appointments{% endblock %}
+
+{% block body %}
+<ul>
+      {% for appointment in appointments %}
+        <li>
+          <strong>{{ appointment.doctor }}</strong> ({{ appointment.doctor.specialization }}) on {{ appointment.appointment_datetime }}<br>
+        </li>
+      {% endfor %}
+    </ul>
+{% endblock %}
