@@ -93,3 +93,4 @@ class UserAppointmentsListView(LoginRequiredMixin, ListView):
         # Добавляем все возможные специализации врачей в контекст
         context['specializations'] = SpecializationCategory.objects.all()
         return context
+
