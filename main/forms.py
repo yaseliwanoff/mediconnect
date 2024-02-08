@@ -1,5 +1,5 @@
 from django import forms
-from .models import AppointmentTime, Appointment, User
+from .models import AppointmentTime, Appointment, User, SpecializationCategory
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
@@ -31,3 +31,7 @@ class AppointmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
+
+
+class DoctorFilterForm(forms.Form):
+    specialization = forms.ModelChoiceField(queryset=SpecializationCategory.objects.all(), label='Specialization', empty_label='All', required=False)

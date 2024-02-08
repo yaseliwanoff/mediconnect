@@ -9,6 +9,10 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+<div class="header">
+    <a href="{% url 'Home' %}">Mediconnect</a>
+    <a href="{% url 'DoctorList' %}">Doctors</a>
+</div>
 {% if user.is_authenticated %}
     <p>{{ user.username }}</p>
     <a href="{% url 'Logout' %}">Logout</a>

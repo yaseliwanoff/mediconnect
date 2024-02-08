@@ -4,11 +4,11 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from .models import *
-from .forms import AppointmentForm, RegisterUserForm, AuthenticationForm
+from .forms import AppointmentForm, RegisterUserForm, AuthenticationForm, DoctorFilterForm
 from django.urls import reverse_lazy
 
 
-class DoctorList(ListView):
+class Main(ListView):
     model = Doctor
     template_name = 'main/main-page.html'
     context_object_name = 'doctors'
@@ -82,15 +82,30 @@ def my_logout_view(request):
 class UserAppointmentsListView(LoginRequiredMixin, ListView):
     template_name = 'main/user-appointments.html'
     context_object_name = 'appointments'
-    paginate_by = 10  # Число записей на странице
 
     def get_queryset(self):
-        # Получаем записи, относящиеся к текущему пользователю
         return Appointment.objects.filter(user=self.request.user)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Добавляем все возможные специализации врачей в контекст
-        context['specializations'] = SpecializationCategory.objects.all()
+        context['doctors'] = Doctor.objects.filter(appointment__user=self.request.user).distinct()
+        context['appointment_times'] = AppointmentTime.objects.filter(appointment__user=self.request.user).distinct()
         return context
 
+
+class DoctorListView(ListView):
+    model = Doctor
+    template_name = 'main/doctor-list.html'
+    context_object_name = 'doctors'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        specialization_filter = self.request.GET.get('specialization')
+        if specialization_filter:
+            queryset = queryset.filter(specialization__id=specialization_filter)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter_form'] = DoctorFilterForm(self.request.GET)
+        return context
