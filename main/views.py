@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
@@ -109,3 +109,7 @@ class DoctorListView(ListView):
         context = super().get_context_data(**kwargs)
         context['filter_form'] = DoctorFilterForm(self.request.GET)
         return context
+
+
+def ContactView(request):
+    return render(request, 'main/contacts.html')

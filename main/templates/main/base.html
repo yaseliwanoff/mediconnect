@@ -1,4 +1,6 @@
 {% load static %}
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,22 +8,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 <div class="header">
-    <a href="{% url 'Home' %}">Mediconnect</a>
-    <a href="{% url 'DoctorList' %}">Doctors</a>
+    <a class="header__logo" href="{% url 'Home' %}">Mediconnect</a>
+    <div class="header__links">
+        <a class="header__doctors" href="{% url 'DoctorList' %}">Doctors</a>
+        <a class="header__contact" href="{% url 'Contact' %}">Contacts</a>
+        {% if user.is_authenticated %}
+            <a class="header__appointments" href="{% url 'UserAppointments' %}">My appointments</a>
+            <a class="header__logout" href="{% url 'Logout' %}">Logout</a>
+        {% else %}
+            <a class="header__login" href="{% url 'Login' %}">Login</a>
+            <a class="header__register" href="{% url 'Register' %}">Register</a>
+        {% endif %}
+    </div>
 </div>
-{% if user.is_authenticated %}
-    <p>{{ user.username }}</p>
-    <a href="{% url 'Logout' %}">Logout</a>
-    <a href="{% url 'UserAppointments' %}">My appointments</a>
-{% else %}
-    <a href="{% url 'Login' %}">Login</a>
-    <a href="{% url 'Register' %}">Register</a>
-{% endif %}
-
 {% block body %}
 {% endblock %}
 </body>

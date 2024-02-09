@@ -1,0 +1,77 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+*,*:before,*:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+nav,footer,header,aside{display: block;}
+
+html,body {
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100 %;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+@font-face {
+  font-family: "Abel-Regular";
+  src: url("fonts/Abel-Regular.ttf");
+}
+
+input,button,textarea{
+    {font-family: "Abel-Regular";}
+}
+
+
+* {
+    font-family: "Abel-Regular";
+    text-decoration: none;
+}
+
+body {
+    max-width: 90%;
+    align-items: center;
+}
+
+.header {
+        padding-top: 30px; /* Поля внутри блока */
+        padding-bottom: 30px;
+        margin-left: 150px;
+        display: flex; /* Включаем flexbox для выравнивания элементов */
+        justify-content: space-between; /* Распределение элементов по ширине */
+        align-items: center; /* Выравнивание по вертикали */
+    }
+
+    .header__logo {
+        color: #2d3436; /* Черный цвет текста */
+        text-decoration: none; /* Убираем подчеркивание */
+        font-size: 24px; /* Размер шрифта */
+    }
+
+    .header__links {
+        display: flex; /* Включаем flexbox для ссылок */
+    }
+
+    .header__links a {
+        color: #2d3436; /* Черный цвет текста */
+        text-decoration: none; /* Убираем подчеркивание */
+        margin-left: 20px; /* Отступ между ссылками */
+        font-size: 18px; /* Размер шрифта */
+        padding: 8px 16px; /* Поля внутри кнопки */
+        border-radius: 4px; /* Скругление углов */
+        transition: background-color 1s ease; /* Плавный переход цвета при наведении */
+    }
+
+    .header__links a:hover {
+        color: #fa4b4b; /* Цвет фона при наведении */
+        transition: background-color 1s ease; /* Плавный переход цвета при наведении */
+
+    }
