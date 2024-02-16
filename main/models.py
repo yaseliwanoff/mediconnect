@@ -36,3 +36,14 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"Appointment with {self.doctor} on {self.appointment_datetime}"
+
+
+class Callback(models.Model):
+    name = models.CharField(default=None, verbose_name='User callback name')
+    email = models.EmailField(default=None, verbose_name='User callback email')
+    phone = models.CharField(default=None, max_length=20)
+    date = models.DateField(default=None)
+
+    def __str__(self):
+        return f"Callback to {self.name}"
+

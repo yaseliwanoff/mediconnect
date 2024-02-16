@@ -37,41 +37,56 @@ input,button,textarea{
 }
 
 body {
-    max-width: 90%;
+    max-width: 80%;
     align-items: center;
+    margin: 0 auto; /* Это центрирование блока по горизонтали */
 }
 
 .header {
         padding-top: 30px; /* Поля внутри блока */
         padding-bottom: 30px;
-        margin-left: 150px;
         display: flex; /* Включаем flexbox для выравнивания элементов */
         justify-content: space-between; /* Распределение элементов по ширине */
         align-items: center; /* Выравнивание по вертикали */
-    }
+}
 
-    .header__logo {
-        color: #2d3436; /* Черный цвет текста */
-        text-decoration: none; /* Убираем подчеркивание */
-        font-size: 24px; /* Размер шрифта */
-    }
+.header__logo img{
+    position: relative;
+    max-width: 200px;
+}
 
-    .header__links {
-        display: flex; /* Включаем flexbox для ссылок */
-    }
+.header__links {
+    display: flex; /* Включаем flexbox для ссылок */
+}
 
-    .header__links a {
-        color: #2d3436; /* Черный цвет текста */
-        text-decoration: none; /* Убираем подчеркивание */
-        margin-left: 20px; /* Отступ между ссылками */
-        font-size: 18px; /* Размер шрифта */
-        padding: 8px 16px; /* Поля внутри кнопки */
-        border-radius: 4px; /* Скругление углов */
-        transition: background-color 1s ease; /* Плавный переход цвета при наведении */
-    }
+.header__links a {
+    color: #2d3436; /* Черный цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    margin-left: 20px; /* Отступ между ссылками */
+    font-size: 18px; /* Размер шрифта */
+    padding: 8px 16px; /* Поля внутри кнопки */
+    border-radius: 4px; /* Скругление углов */
+    transition: background-color 1s ease; /* Плавный переход цвета при наведении */
+}
 
-    .header__links a:hover {
-        color: #fa4b4b; /* Цвет фона при наведении */
-        transition: background-color 1s ease; /* Плавный переход цвета при наведении */
+.header__links a:hover {
+    color: #fa4b4b; /* Цвет фона при наведении */
+    transition: background-color 1s ease; /* Плавный переход цвета при наведении */
+}
 
-    }
+.footer {
+    background-color: #2d3436; /* Цвет фона футера */
+    color: #ffffff; /* Цвет текста */
+    padding: 20px 0; /* Внутренние отступы */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.footer a {
+    color: #ffffff; /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    margin: 0 10px; /* Отступы между ссылками */
+}
+
+.footer a:hover {
+    color: #fa4b4b; /* Цвет ссылок при наведении */
+}

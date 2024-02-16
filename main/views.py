@@ -4,17 +4,32 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from .models import *
-from .forms import AppointmentForm, RegisterUserForm, AuthenticationForm, DoctorFilterForm
+from .forms import AppointmentForm, RegisterUserForm, AuthenticationForm, DoctorFilterForm, CallbackForm
 from django.urls import reverse_lazy
 
 
-class Main(ListView):
-    model = Doctor
+class Main(LoginRequiredMixin, ListView):
     template_name = 'main/main-page.html'
     context_object_name = 'doctors'
 
     def get_queryset(self):
         return Doctor.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['specializations'] = SpecializationCategory.objects.all()
+        context['callback_form'] = CallbackForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        callback_form = CallbackForm(request.POST)
+        if callback_form.is_valid():
+            callback_form.save()  # Сохраняем данные формы, если форма валидна
+            return redirect(request.path)  # Перенаправляем пользователя на ту же страницу после успешной отправки формы
+        else:
+            # Если форма не валидна, мы можем передать её обратно в контекст шаблона,
+            # чтобы отобразить ошибки в шаблоне
+            return self.get(request, *args, **kwargs)
 
 
 class DoctorInfo(DetailView):

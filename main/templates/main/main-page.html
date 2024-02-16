@@ -4,8 +4,42 @@
 {% block title %}Hospital{% endblock %}
 
 {% block body %}
-{% for doctor in doctors %}
-    <img src="{{ doctor.photo.url }}" alt="Doctor photo" class="doctor-photo" style="width: 50px;">
-    <a href="{% url 'DocInfo' doctor_id=doctor.id %}">{{ doctor.first_name }}</a>
-{% endfor %}
+<div class="landing">
+    <div class="landing__slogan">
+        <div class="landing__slogan--p">
+            <p>With the love of care,<br> the power of experience: <br> your health is our mission!</p>
+        </div>
+        <div class="landing__slogan--img">
+            <img src="{% static "main/img/slogan-img.jpg" %}" alt="We are happy, when you are happy>
+        </div>
+    </div>
+    <div class="landing__">
+
+    </div>
+    <div class="landing__doctors">
+        <p>Your Health Team</p>
+        <div>
+        {% for doctor in doctors %}
+            <img src="{{ doctor.photo.url }}" alt="Doctor photo" class="doctor-photo" style="width: 50px;">
+            <p>{{ doctor.first_name }}{{ doctor.last_name }}</p>
+            <p>{{ doctor.specialization }}</p>
+            <a href="{% url 'DocInfo' doctor_id=doctor.id %}">Learn More</a>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="landing__specializations">
+        {% for specialization in specializations %}
+            <p>{{ specialization.specialization_title }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="landing__callback">
+        <h1>Callback Form</h1>
+        <form method="post" action="{% url 'Home' %}">
+            {% csrf_token %}
+            {{ callback_form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
