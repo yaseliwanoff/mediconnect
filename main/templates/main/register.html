@@ -11,6 +11,7 @@
     <form method="post" class="register-form">
       {% csrf_token %}
         {% for f in form %}
+          <h1>test message</h1>
           <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label> {{ f }}
           <div class="form-error">{{ f.errors }}</div>
         {% endfor %}
