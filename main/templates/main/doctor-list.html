@@ -7,14 +7,12 @@
 <h1>Doctor List</h1>
     <form method="get">
         {{ filter_form.as_p }}
-        <button type="submit">Filter</button>
+        <button type="submit">Choose</button>
     </form>
     {% for doctor in doctors %}
         <div>
             <h2>{{ doctor.first_name }} {{ doctor.last_name }}</h2>
             <p>Specialization: {{ doctor.specialization }}</p>
-            <p>Experience: {{ doctor.experience }}</p>
-            <p>Price: {{ doctor.price }}</p>
         </div>
     {% endfor %}
 {% endblock %}

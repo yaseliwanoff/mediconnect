@@ -1,8 +1,7 @@
 from django import forms
-from .models import AppointmentTime, Appointment, User, SpecializationCategory, Callback
+from .models import AppointmentTime, Appointment, User, SpecializationCategory, Callback, Doctor
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.forms.widgets import DateInput
-
 
 
 class RegisterUserForm(UserCreationForm):
@@ -42,6 +41,16 @@ class DoctorFilterForm(forms.Form):
                                             empty_label='All', required=False)
 
 
+# class AppointmentDoctorFilterForm(forms.Form):
+#     doctor = forms.ModelChoiceField(queryset=Doctor.objects.none(), label='Select Doctor')
+#
+#     def __init__(self, *args, **kwargs):
+#         user = kwargs.pop('user', None)
+#         super().__init__(*args, **kwargs)
+#         if user:
+#             self.fields['doctor'].queryset = Doctor.objects.filter(appointment__user=user).distinct()
+
+
 class CallbackForm(forms.ModelForm):
     class Meta:
         model = Callback
@@ -49,4 +58,3 @@ class CallbackForm(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),  # Используем HTML5 элемент input типа date
         }
-

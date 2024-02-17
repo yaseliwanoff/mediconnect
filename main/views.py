@@ -8,7 +8,7 @@ from .forms import AppointmentForm, RegisterUserForm, AuthenticationForm, Doctor
 from django.urls import reverse_lazy
 
 
-class Main(LoginRequiredMixin, ListView):
+class Main(ListView):
     template_name = 'main/main-page.html'
     context_object_name = 'doctors'
 
@@ -104,9 +104,8 @@ class UserAppointmentsListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['doctors'] = Doctor.objects.filter(appointment__user=self.request.user).distinct()
-        context['appointment_times'] = AppointmentTime.objects.filter(appointment__user=self.request.user).distinct()
+        # context['filter_form'] = AppointmentDoctorFilterForm(user=self.request.user)
         return context
-
 
 class DoctorListView(ListView):
     model = Doctor

@@ -23,7 +23,6 @@ class Doctor(models.Model):
     specialization = models.ForeignKey(SpecializationCategory, on_delete=models.CASCADE, related_name='doctors')
     about = models.TextField(blank=True, verbose_name='Information about doctor', max_length=600)
     experience = models.TextField(blank=True, verbose_name='Experience')
-    price = models.IntegerField(default=None, blank=True, verbose_name='Visit price')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
