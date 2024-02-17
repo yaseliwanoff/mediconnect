@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-# Для тестового пуша, удалить
+
 class SpecializationCategory(models.Model):
     specialization_title = models.CharField(verbose_name='Specialization title')
 
