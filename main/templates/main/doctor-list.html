@@ -12,7 +12,8 @@
     {% for doctor in doctors %}
         <div>
             <h2>{{ doctor.first_name }} {{ doctor.last_name }}</h2>
-            <p>Specialization: {{ doctor.specialization }}</p>
+            <p>{{ doctor.specialization }}</p>
+            <a href="{% url 'DocInfo' doctor_id=doctor.id %}">Learn More</a>
         </div>
     {% endfor %}
 {% endblock %}

@@ -4,12 +4,9 @@
 
 {% block body %}
     <img src="{{ doctor.photo.url }}" alt="" style="width:50px;">
-    <p>{{ doctor.first_name }}</p>
-    <p>{{ doctor.last_name }}</p>
+    <p>{{ doctor.first_name }}{{ doctor.last_name }}</p>
     <p>{{ doctor.about }}</p>
     <p>{{ doctor.experience }}</p>
-    <p>{{ doctor.price }}₾</p>
-
     <form method="post" action="{% url 'DocInfo' doctor_id=doctor.id %}">
     {% csrf_token %}
     {{ form.as_p }}
