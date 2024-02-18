@@ -66,9 +66,9 @@ WSGI_APPLICATION = 'mediconnect.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'mediconnect',
-       'USER': 'postgres',
-       'PASSWORD': 'test',
+       'NAME': 'test_django_db',  # БД
+       'USER': 'django_admin',  # СуперЮзер для БД
+       'PASSWORD': 'wsx3edc4',
        'HOST': 'localhost',
        'PORT': '5432',
    }
