@@ -30,6 +30,77 @@
             <img src="{% static 'main/img/main_image.jpeg' %}" alt="main image" class="img__fluid">
         </div>
     </div>
+    <div class="doctors__list">
+        <div class="doctors__list__text">
+            <div class="doctors__list__text__title">
+                Your Health Team
+            </div>
+            <div class="doctors__list__text__subtitle">
+                Below is a team of doctors who will be responsible 
+                for your health and restoration of your strength.
+            </div>
+        </div>
+        <div class="doctors__list__info">
+            {% for doctor in doctors %}
+                <div class="doctors__list__info__card">
+                    <div class="doctors__list__info__card__img">
+                        <img src="{{ doctor.photo.url }}" alt="doctor image" class="doctor__photo">
+                    </div>
+                    <div class="doctors__list__info__card__text">
+                        <div class="doctors__list__info__card__text__firstnameANDlastname">
+                            {{ doctor.first_name }} {{ doctor.last_name }}
+                            <div class="doctors__list__info__card__text__specialization">
+                                {{ doctor.specialization }}
+                            </div>
+                            <div class="doctors__list__info__card__text__button">
+                                <button>
+                                    <a href="{% url 'DocInfo' doctor_id=doctor.id %}">Learn More</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="callback__user__request">
+        <div class="callback__user__request__text">
+            <div class="callback__user__request__text_title">
+                Interested? leave your request with us
+            </div>
+            <div class="callback__user__request__text__subtitle">
+                fill out the form and we will be able to contact you as 
+                soon as possible to discuss in detail your questions
+            </div>
+        </div>
+        <div class="callback__user__request__forms">
+            <form class="callback__user__request__forms__UserName__form" method="post" action="{% url 'Home' %}">
+                <!-- {% csrf_token %}
+                {{ callback_form.as_p }} -->
+                <div class="callback__user__request__forms__UserName">
+                    <input type="text" id="name" name="name" pattern="^[А-Яа-яЁё][а-яё]+$" placeholder="Your name">
+                </div>
+                <div class="callback__user__request__forms__UserEmail">
+                    <input type="email" id="email" name="email" pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" placeholder="Your email">
+                </div>
+                <div class="callback__user__request__forms__UserPhoneNumber">
+                    <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Your phone number">
+                </div>
+                <div class="callback__user__request__forms__UserData">
+                    <input type="date" id="date" name="date" value="2024-02-19">
+                </div>
+                <div class="callback__user__request__forms__button">
+                    <button class="forms__button" type="submit">Send</button>
+                    <div class="callback__user__request__forms__button__description">
+                        By submitting your data, you agree to the personal data processing policy
+                    </div>
+                </div>
+            </form>
+            </div>
+        <div class="callback__user__request__img">
+            <img src="{% static './main/img/medium-shot-scientists-posing-together.png' %}" alt="doctors">
+        </div>
+    </div>
 </main>
 
 {% endblock %}
