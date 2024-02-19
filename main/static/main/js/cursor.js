@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cursor.style.top = y + 'px';
   }
 
-  // Добавляем обработчик движения мыши
   document.addEventListener('mousemove', (e) => {
     moveCursor(e.clientX, e.clientY);
   });
