@@ -1,0 +1,17 @@
+.custom-cursor {
+    position: fixed;
+    z-index: 100;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #000000;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: transform .10s linear;
+    pointer-events: none;
+}
+
+.custom-cursor.pressed {
+    transform: translate(-50%, -50%) scale(1.5);
+    transition: transform .1s linear;
+}
