@@ -28,10 +28,15 @@
     box-sizing: border-box;
 }
 
-nav,footer,header,aside{display: block;}
+nav,footer,header,aside{
+    display: block;
+}
+
+* {
+    cursor: none;
+  }
 
 html,body {
-    /* cursor: none; */
     font-size: 100%;
     line-height: 1;
     font-size: 14px;
