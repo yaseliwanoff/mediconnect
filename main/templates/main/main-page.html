@@ -4,44 +4,32 @@
 {% block title %}Hospital{% endblock %}
 
 {% block body %}
-<div class="landing">
-    <div class="landing__slogan">
-        <div class="landing__slogan--p">
-            <p>With the love of care,<br> the power of experience: <br> your health is our mission!</p>
-        </div>
-        <div class="landing__slogan--img">
-            <img src="{% static "main/img/slogan-img.jpeg" %}" alt="We are happy, when you are happy">
-        </div>
-    </div>
-    <div class="landing__doctors">
-        <div class="landing_doctors--title">
-            <p>Your Health Team</p>
-        </div>
-        <div class="landing__doctors--info">
-        {% for doctor in doctors %}
-            <div class="landing__doctors--card">
-                <img src="{{ doctor.photo.url }}" alt="Doctor photo" class="doctor-photo">
-                <p>{{ doctor.first_name }}{{ doctor.last_name }}</p>
-                <p>{{ doctor.specialization }}</p>
-                <a href="{% url 'DocInfo' doctor_id=doctor.id %}">Learn More</a>
-            </div>
-        {% endfor %}
-        </div>
-    </div>
-    <div class="landing__specializations">
-        {% for specialization in specializations %}
-            <p>{{ specialization.specialization_title }}</p>
-        {% endfor %}
-    </div>
 
-    <div class="landing__callback">
-        <h1>Callback Form</h1>
-        <form method="post" action="{% url 'Home' %}">
-            {% csrf_token %}
-            {{ callback_form.as_p }}
-            <button type="submit">Submit</button>
-        </form>
+<main class="container">
+    <div class="main__screen">
+        <div class="main__screen__text">
+            <div class="main__screen__text__title">
+                <h1>
+                    With the love of care,
+                    the power of experience:
+                    your health is our mission!
+                </h1>
+            </div>
+            <div class="main__screen_text__subtitle">
+                We will help you restore your strength and 
+                restore your health through proper rest and 
+                professional doctors.
+                <div class="main__screen__text__subtitle__button">
+                    <button>
+                        <a href="#">submit your application</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="main__screen_image">
+            <img src="{% static 'main/img/main_image.jpeg' %}" alt="main image" class="img__fluid">
+        </div>
     </div>
-</div>
+</main>
 
 {% endblock %}
