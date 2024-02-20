@@ -13,7 +13,7 @@ class Main(ListView):
     context_object_name = 'doctors'
 
     def get_queryset(self):
-        return Doctor.objects.all()
+        return Doctor.objects.all()[:4]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -106,6 +106,7 @@ class UserAppointmentsListView(LoginRequiredMixin, ListView):
         context['doctors'] = Doctor.objects.filter(appointment__user=self.request.user).distinct()
         # context['filter_form'] = AppointmentDoctorFilterForm(user=self.request.user)
         return context
+
 
 class DoctorListView(ListView):
     model = Doctor
