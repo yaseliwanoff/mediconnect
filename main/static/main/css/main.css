@@ -8,6 +8,8 @@
     width: 1420px;
     margin: 0 auto;
     box-sizing: border-box;
+    min-height: 100%;
+    overflow: hidden;
 }
 
 /* ----------------------------------------------- настройки сайта */
@@ -20,6 +22,7 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 *,*:before,*:after{
@@ -32,10 +35,6 @@ nav,footer,header,aside{
     display: block;
 }
 
-* {
-    cursor: none;
-  }
-
 html,body {
     font-size: 100%;
     line-height: 1;
@@ -46,6 +45,12 @@ html,body {
 }
 
 /* ----------------------------------------------- хеадер сайта */
+
+/* @media(prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+} */
 
 header {
     top: 0;
@@ -170,6 +175,49 @@ header {
     transition: opacity 0.3s ease;
 }
 
+.header__logout {
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 14px 25px 14px 25px;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(250, 250, 250);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.header__logout button:hover {
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 14px 25px 14px 25px;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(247, 247, 247);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.header__appointments {
+    margin-right: 20px;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-decoration-line: underline;
+}
+
 /* ----------------------------------------------- контент сайта */
 
 .main__screen {
@@ -284,42 +332,48 @@ header {
 }
 
 .doctors__list__info__card {
-    /* margin-bottom: 20px; */
+    display: flex;
+    flex-direction: column;
     width: 340px;
-    height: 484px;
-    border: 1px solid rgb(213, 213, 213);
+    height: 500px;
     border-radius: 20px;
-    background: rgb(250, 250, 250);
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
 }
 
 .doctors__list__info__card__img img {
     width: 280px;
     height: 286px;
-    border-radius: 20px;
+    border-radius: 50%;
 }
 
 .doctors__list__info__card__text {
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .doctors__list__info__card__text__firstnameANDlastname {
-    width: 151px;
+    width: 160px;
     color: rgb(50, 50, 50);
     font-family: "Inter";
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
 }
 
 .doctors__list__info__card__text__specialization {
-    margin-top: 5px;
+    margin-top: 7px;
     color: rgb(144, 145, 145);
     font-family: "Inter";
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
     line-height: 14px;
+}
+
+.doctors__list__info__card:hover {
+    border-color: rgb(239, 239, 239);
+    background-color: rgb(255, 255, 255);
 }
 
 .doctors__list__info__card__text__button button {
@@ -470,6 +524,29 @@ header {
     line-height: 12px;
 }
 
+.callback__user__request__forms__UserName__form input {
+    margin-top: 10px;
+    width: 310px;
+    height: 50px;
+    align-items: center;
+    padding: 14px 25px 14px 25px;
+    border: 0;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.my-custom-class-no-label label {
+    display: none;
+}
+
 .callback__user__request__forms__button__description {
     margin-top: 10px;
     width: 310px;
@@ -523,7 +600,66 @@ header {
 }
 
 .callback__user__request__img img {
+    margin-left: 480px;
+    margin-top: -550px;
     max-width: 100%;
     height: auto;
     object-fit: cover;
 }
+
+/* ----------------------------------------------- футер сайта */
+
+.footer {
+    margin-top: 125px;
+    background: rgb(24, 24, 24);
+    width: 100%;
+    height: 348px;
+    padding-top: 48px;
+}
+
+.footer__inline__logo__text {
+    width: 137px;
+    color: rgb(116, 116, 116);
+    font-family: "Inter";
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 11px;
+}
+
+.footer__inline__navigation__text__title {
+    width: 340px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+}
+
+.footer__inline__navigation__text__subtitle {
+    margin-top: 10px;
+    width: 253px;
+    color: rgb(116, 116, 116);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.footer__inline__navigation__links {
+    margin-top: 35px;
+}
+
+.footer__inline__navigation__links a {
+    cursor: pointer;
+    color: rgb(116, 116, 116);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.footer__inline__navigation {
+    float: right;
+    margin-top: -50px;
+}
+

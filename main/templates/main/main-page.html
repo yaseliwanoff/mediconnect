@@ -73,21 +73,21 @@
                 soon as possible to discuss in detail your questions
             </div>
         </div>
-        <div class="callback__user__request__forms">
+        <div class="callback__user__request__forms" id="s1">
             <form class="callback__user__request__forms__UserName__form" method="post" action="{% url 'Home' %}">
                 {% csrf_token %}
-                <!-- {{ callback_form.as_p }} -->
-                <div class="callback__user__request__forms__UserName">
-                    <input type="text" id="name" name="name" pattern="^[А-Яа-яЁё][а-яё]+$" placeholder="Your name">
+                <div class="callback__user__request__forms__UserName__form">
+                    <input type="text" class="form-control" placeholder="Your Name" name="name">
                 </div>
-                <div class="callback__user__request__forms__UserEmail">
-                    <input type="email" id="email" name="email" pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" placeholder="Your email">
+                <div class="callback__user__request__forms__UserName__form">
+                    <input type="email" class="form-control" placeholder="Your Email" name="email" pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+">
                 </div>
-                <div class="callback__user__request__forms__UserPhoneNumber">
-                    <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Your phone number">
+                <div class="callback__user__request__forms__UserName__form">
+                    <input type="tel" class="form-control" placeholder="Your Phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
                 </div>
-                <div class="callback__user__request__forms__UserData">
-                    <input type="date" id="date" name="date" value="2024-02-19">
+                <!-- <script src="{% static '/main/js/data.js' %}"></script> -->
+                <div class="callback__user__request__forms__UserName__form">
+                    <input type="date" class="form-control" placeholder="Введите дату" name="date" value="2024-02-19">
                 </div>
                 <div class="callback__user__request__forms__button">
                     <button class="forms__button" type="submit">Send</button>
@@ -96,7 +96,7 @@
                     </div>
                 </div>
             </form>
-            </div>
+        </div>
         <div class="callback__user__request__img">
             <img src="{% static './main/img/medium-shot-scientists-posing-together.png' %}" alt="doctors">
         </div>
