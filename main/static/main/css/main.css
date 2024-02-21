@@ -9,7 +9,7 @@
     margin: 0 auto;
     box-sizing: border-box;
     min-height: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 /* ----------------------------------------------- настройки сайта */
@@ -332,16 +332,16 @@ header {
 }
 
 .doctors__list__info__card {
-    /* margin-bottom: 20px; */
+    display: flex;
+    flex-direction: column;
     width: 340px;
-    height: 484px;
-    /* border: 1px solid rgb(213, 213, 213); */
+    height: 500px;
     border-radius: 20px;
-    /* background: rgb(250, 250, 250); */
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
-    text-align: center;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
 }
 
 .doctors__list__info__card__img img {
@@ -351,25 +351,29 @@ header {
 }
 
 .doctors__list__info__card__text {
-    margin-top: 15px;
-    text-align: center;
+    margin-top: 25px;
 }
 
 .doctors__list__info__card__text__firstnameANDlastname {
-    width: 151px;
+    width: 160px;
     color: rgb(50, 50, 50);
     font-family: "Inter";
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
 }
 
 .doctors__list__info__card__text__specialization {
-    margin-top: 5px;
+    margin-top: 7px;
     color: rgb(144, 145, 145);
     font-family: "Inter";
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
     line-height: 14px;
+}
+
+.doctors__list__info__card:hover {
+    border-color: rgb(239, 239, 239);
+    background-color: rgb(255, 255, 255);
 }
 
 .doctors__list__info__card__text__button button {
