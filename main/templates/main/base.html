@@ -27,7 +27,7 @@
             <a class="header__contact" href="{% url 'Contact' %}">Contacts</a>
             <div class="header__links__allbuttons">
                 {% if user.is_authenticated %}
-                    <a class="header__appointments" href="{% url 'UserAppointments' %}">My appointments</a>
+                    <a class="header__appointments" href="{% url 'UserPage' %}">My page</a>
                     <button class="header__login__button">
                         <a class="header__logout" href="{% url 'Logout' %}">Logout</a>
                     </button>
@@ -66,10 +66,10 @@
         </div>
         <div class="footer__inline__navigation__links">
             <div class="footer__inline__navigation__links__email_one">
-                <a href="mailto:mediaconnect@temail.com">mediaconnect@temail.com</a>
+                <a href="mailto:mediconnect@temail.com">mediconnect@temail.com</a>
             </div>
             <div class="footer__inline__navigation__links__email_two">
-                <a href="mailto:first_mediaconnect@temail.com">first_mediaconnect@temail.com</a>
+                <a href="mailto:first_mediconnect@temail.com">first_mediconnect@temail.com</a>
             </div>
         </div>
     </div>

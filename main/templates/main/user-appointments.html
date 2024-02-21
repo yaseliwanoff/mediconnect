@@ -5,12 +5,13 @@
 
 {% block body %}
 {% if appointments %}
-<!--<div class="sidebar">-->
-<!--    <form method="get">-->
-<!--        {{ filter_form.as_p }}-->
-<!--        <button type="submit">Filter</button>-->
-<!--    </form>-->
-<!--</div>-->
+<div class="sidebar">
+    <form method="post">
+        {% csrf_token %}
+        {{ filter_form.as_p }}
+        <button type="submit">Filter</button>
+    </form>
+</div>
 
 <ul>
   {% for appointment in appointments %}
