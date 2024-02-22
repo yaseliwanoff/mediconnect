@@ -10,7 +10,7 @@ class SpecializationCategory(models.Model):
 
 
 class AppointmentTime(models.Model):
-    appointment_time = models.DateTimeField(verbose_name='Available time')
+    appointment_time = models.CharField(verbose_name='Available time')
 
     def __str__(self):
         return self.appointment_time

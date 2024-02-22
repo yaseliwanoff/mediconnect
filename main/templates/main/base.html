@@ -28,7 +28,7 @@
             <a class="header__contact" href="{% url 'Contact' %}">Contacts</a>
             <div class="header__links__allbuttons">
                 {% if user.is_authenticated %}
-                    <a class="header__appointments" href="{% url 'UserAppointments' %}">My appointments</a>
+                    <a class="header__appointments" href="{% url 'UserPage' %}">My appointments</a>
                     <button class="header__login__button">
                         <a class="header__logout" href="{% url 'Logout' %}">Logout</a>
                     </button>
