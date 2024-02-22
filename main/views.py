@@ -4,7 +4,8 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from .models import *
-from .forms import AppointmentForm, RegisterUserForm, AuthenticationForm, DoctorFilterForm, CallbackForm
+from .forms import AppointmentForm, RegisterUserForm, AuthenticationForm, DoctorFilterForm, CallbackForm, \
+    AppointmentDoctorFilterForm
 from django.urls import reverse_lazy
 
 
@@ -94,18 +95,30 @@ def my_logout_view(request):
     return redirect('Home')
 
 
-class UserAppointmentsListView(LoginRequiredMixin, ListView):
+class UserPageView(LoginRequiredMixin, ListView):
     template_name = 'main/user-appointments.html'
     context_object_name = 'appointments'
 
     def get_queryset(self):
-        return Appointment.objects.filter(user=self.request.user)
+        queryset = Appointment.objects.filter(user=self.request.user)
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['doctors'] = Doctor.objects.filter(appointment__user=self.request.user).distinct()
-        # context['filter_form'] = AppointmentDoctorFilterForm(user=self.request.user)
+        context['filter_form'] = AppointmentDoctorFilterForm(user=self.request.user)
         return context
+
+    def post(self, request, *args, **kwargs):
+        filter_form = AppointmentDoctorFilterForm(request.POST, user=request.user)
+        if filter_form.is_valid():
+            selected_doctor = filter_form.cleaned_data['doctor']
+            queryset = Appointment.objects.filter(user=self.request.user, doctor=selected_doctor)
+            self.object_list = queryset  # Обновляем атрибут object_list
+            context = self.get_context_data(appointments=queryset, filter_form=filter_form)
+            return render(request, self.template_name, context)
+        else:
+            return self.render_to_response(self.get_context_data())
 
 
 class DoctorListView(ListView):

@@ -41,14 +41,14 @@ class DoctorFilterForm(forms.Form):
                                             empty_label='All', required=False)
 
 
-# class AppointmentDoctorFilterForm(forms.Form):
-#     doctor = forms.ModelChoiceField(queryset=Doctor.objects.none(), label='Select Doctor')
-#
-#     def __init__(self, *args, **kwargs):
-#         user = kwargs.pop('user', None)
-#         super().__init__(*args, **kwargs)
-#         if user:
-#             self.fields['doctor'].queryset = Doctor.objects.filter(appointment__user=user).distinct()
+class AppointmentDoctorFilterForm(forms.Form):
+    doctor = forms.ModelChoiceField(queryset=Doctor.objects.none(), label='Select Doctor')
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if user:
+            self.fields['doctor'].queryset = Doctor.objects.filter(appointment__user=user).distinct()
 
 
 class CallbackForm(forms.ModelForm):
