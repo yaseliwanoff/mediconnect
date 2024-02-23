@@ -663,3 +663,81 @@ header {
     margin-top: -50px;
 }
 
+/* ----------------------------------------------- контакты */
+
+.contact {
+    margin-top: 99px;
+}
+
+.map__location {
+    margin-top: 125px;
+}
+
+.all__contacts__socalmedia__phone {
+    display: flex;
+}
+
+.all__contacts__socalmedia__phone__text a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.all__contacts__socalmedia__instagram {
+    margin-top: 10px;
+    display: flex;
+}
+
+.all__contacts__socalmedia__instagram__text a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.all__contacts__socalmedia__facebook {
+    margin-top: 10px;
+    display: flex;
+}
+
+.all__contacts__socalmedia__facebook__text a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.all__contacts__socalmedia__location {
+    margin-top: 10px;
+    display: flex;
+}
+
+.all__contacts__socalmedia__location__text {
+    position: relative;
+    margin-top: -25px;
+    margin-left: 40px;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.map__location {
+    float: right;
+    position: relative;
+    margin-top: -170px;
+}
+
+./* ----------------------------------------------- доктора */
