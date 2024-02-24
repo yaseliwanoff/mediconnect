@@ -1,13 +1,15 @@
 from django import forms
-from .models import AppointmentTime, Appointment, User, SpecializationCategory, Callback, Doctor
+from .models import Appointment, User, SpecializationCategory, Callback, Doctor, AppointmentTime
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.forms.widgets import DateInput
 
 
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user'}))
-    date_of_birth = forms.DateField(label='Дата рождения', widget=DateInput(
-        attrs={'class': 'reg-user', 'type': 'date'}))  # Используем DateInput с атрибутом type="date"
+    first_name = forms.CharField(label='First name', widget=forms.TextInput(attrs={'class': 'reg-user'}))
+    last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'reg-user'}))
+    date_of_birth = forms.DateField(label='Date of birth', widget=DateInput(
+        attrs={'class': 'reg-user', 'type': 'date'}))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'reg-user'}))
     phone_number = forms.CharField(label='Phone number', widget=forms.TextInput(attrs={'class': 'reg-user'}))
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'reg-user'}))
@@ -15,7 +17,8 @@ class RegisterUserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'date_of_birth', 'email', 'phone_number', 'password1', 'password2')
+        fields = (
+        'first_name', 'last_name', 'date_of_birth', 'email', 'phone_number', 'username', 'password1', 'password2')
 
 
 class LoginUserForm(AuthenticationForm):
@@ -24,16 +27,23 @@ class LoginUserForm(AuthenticationForm):
 
 
 class AppointmentForm(forms.ModelForm):
-    appointment_datetime = forms.ModelChoiceField(queryset=AppointmentTime.objects.all(),
-                                                  empty_label='Select your appointment time')
+    day = forms.DateField(label='Appointment day', widget=forms.TextInput(attrs={'type': 'date'}))
+    time = forms.ModelChoiceField(queryset=AppointmentTime.objects.all(), label='Appointment time', required=False)
 
     class Meta:
         model = Appointment
-        fields = ['appointment_datetime']
+        fields = ['day', 'time']
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
+        self.user = kwargs.pop('user', None)  # Извлекаем пользователя из kwargs
         super().__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.user = self.user  # Присваиваем пользователя экземпляру Appointment
+        if commit:
+            instance.save()
+        return instance
 
 
 class DoctorFilterForm(forms.Form):
@@ -56,5 +66,5 @@ class CallbackForm(forms.ModelForm):
         model = Callback
         fields = ('name', 'email', 'phone', 'date')
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date'}),  # Используем HTML5 элемент input типа date
+            'date': forms.DateInput(attrs={'type': 'date'}),  # Используем HTML элемент input типа date
         }

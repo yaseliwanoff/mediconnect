@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from .views import DoctorInfo, DoctorListView, RegisterFormView, LoginUserView, my_logout_view,\
-    UserPageView, Main, ContactView
+    UserPageView, Main, ContactView, cancel_appointment
 
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('logout/', my_logout_view, name='Logout'),
     path('my-page/', UserPageView.as_view(), name='UserPage'),
     path('doctor-list/', DoctorListView.as_view(), name='DoctorList'),
-    path('contacts/', views.ContactView, name='Contact')
+    path('contacts/', views.ContactView, name='Contact'),
+    path('cancel-appointment/<int:appointment>/', views.cancel_appointment, name='Cancel'),
 ]

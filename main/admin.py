@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Doctor, SpecializationCategory, Appointment, AppointmentTime, Callback
+from .models import Doctor, SpecializationCategory, Appointment, Callback, AppointmentTime
 
 admin.site.register(Doctor)
 admin.site.register(SpecializationCategory)

@@ -18,8 +18,15 @@
 <ul>
   {% for appointment in appointments %}
     <li>
-      <strong>{{ appointment.doctor }}</strong> ({{ appointment.doctor.specialization }}) on {{ appointment.appointment_datetime }}<br>
+      <strong>{{ appointment.doctor }}</strong> ({{ appointment.doctor.specialization }}) on {{ appointment.appointment_day }} {{ appointment.appointment_time }}<br>
     </li>
+    <div class="cart_item-content">
+        <form action="{% url 'Cancel' appointment.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="remove-btn">Cancel</button>
+        </form>
+    </div>
+
   {% endfor %}
 </ul>
 {% endif %}
