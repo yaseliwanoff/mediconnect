@@ -5,17 +5,28 @@
 
 
 {% block body %}
-<div class="container">
-  <div style="height: 600px;" class="register-box">
-    <h1 class="register__title">Registration</h1><br>
-    <form method="post" class="register-form">
-      {% csrf_token %}
+<form class="form container" method="post">
+    <!-- <script src="{% static '/main/js/test.js' %}"></script> -->
+    <div class="form-text">
+        <div class="form-text-title">
+            Account <br> 
+            registration
+        </div>
+        <div class="form-text-subtitle">
+            Register your account for further authorization on our website and synchronization of your data
+        </div>
+    </div>
+    {% csrf_token %}
         {% for f in form %}
-          <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label> {{ f }}
-          <div class="form-error">{{ f.errors }}</div>
+            <div class="flex form-input">
+                {{ f }}
+                <span class="placeholder-text">{{ f.label_tag }}</span>
+                <div class="form-error">{{ f.errors }}</div>
+            </div>
         {% endfor %}
-        <button type="submit">Registration</button>
-    </form>
-  </div>
-</div>
+    <button class="submit">Register</button>
+    <div class="checking-have-account-or-not">
+        <p class="signin">Already have an account? <a href="{% url 'Login' %}" class="signin-link">Login</a></p>
+    </div>
+</form>
 {% endblock %}

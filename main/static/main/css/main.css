@@ -740,4 +740,341 @@ header {
     margin-top: -170px;
 }
 
-./* ----------------------------------------------- доктора */
+/* ----------------------------------------------- регистрация */
+
+.form-text-title {
+    font-family: "Inter";
+    font-weight: 700;
+    color: #000000;
+    font-size: 35px;
+}
+
+.form-text-subtitle,
+.signin {
+    margin-top: 15px;
+    line-height: 17px;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(50, 50, 50);
+}
+
+.signin {
+    text-align: center;
+}
+
+.signin-link a {
+    color: rgb(240, 33, 33);;
+}
+
+.form {
+    z-index: 1;
+    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.63);
+    margin-top: 99px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    border: 1px solid #dddddd;
+}
+
+.form-input {
+    position: relative;
+}
+
+.form-input input[type="text"],
+.form-input input[type="email"],
+.form-input input[type="password"],
+.form-input input[type="tel"],
+.form-input input[type="date"] {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+    font-family: "Iner";
+    font-weight: 400;
+}
+  
+/* .form-input input[type="text"]:focus,
+.form-input input[type="email"]:focus,
+.form-input input[type="password"]:focus,
+.form-input input[type="tel"]:focus,
+.form-input input[type="date"]:focus {
+    outline: none;
+    border-bottom: 1px solid #1e90ff;
+} */
+  
+.placeholder-text {
+    position: absolute;
+    top: 27px;
+    left: 10px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    font-size: 13px;
+    color: #b4b4b4;
+    font-family: "Inter";
+    font-weight: 400;
+}
+
+.form-input input[type="text"]:focus + .placeholder-text,
+.form-input input[type="email"]:focus + .placeholder-text,
+.form-input input[type="password"]:focus + .placeholder-text,
+.form-input input[type="tel"]:focus + .placeholder-text,
+.form-input input[type="date"]:focus + .placeholder-text,
+.form-input input[type="text"]:valid + .placeholder-text,
+.form-input input[type="email"]:valid + .placeholder-text,
+.form-input input[type="password"]:valid + .placeholder-text,
+.form-input input[type="tel"]:valid + .placeholder-text,
+.form-input input[type="date"]:valid + .placeholder-text {
+    top: 40px;
+    left: 15;
+    font-size: 10px;
+    color: #838383;
+    font-family: "Inter";
+    font-weight: 600;
+}
+
+
+.form-input {
+    position: relative;
+}
+
+.form-input input {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+}
+
+.form-input input:focus::placeholder {
+    color: rgb(70, 70, 70);
+    transform: translateY(14px);
+    transition: all 0.3s ease;
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.form-input input:focus + .placeholder-text {
+    color: #cc1b1b;
+}
+
+.form-input input:not(:focus):valid + .placeholder-text {
+    color: #2f7e48;
+}
+
+.reg-user {
+    margin-top: 10px;
+    background-color: #ffffff;
+    color: #4f4f4f;
+    width: 100%;
+    height: 45px;
+    padding: 10px 10px 10px 10px;
+    outline: 0;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 10px;
+}
+
+.submit {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 57px;
+    background: rgb(240, 33, 33);
+    border-radius: 10px;
+    border: 0;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.submit:hover {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 57px;
+    background: rgb(205, 27, 27);
+    border-radius: 10px;
+    border: 0;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.checking-have-account-or-not a {
+    color: red;
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------- авторизация */
+
+.form-login {
+    z-index: 1;
+    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.63);
+    margin-top: 99px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    border: 1px solid #dddddd;
+}
+
+.form-text-title-login {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-text-subtitle-login {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+.form-input-login {
+    position: relative;
+}
+
+.form-input-login input[type="text"],
+.form-input-login input[type="email"],
+.form-input-login input[type="password"] {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+}
+
+/* .form-input-login input[type="text"]:focus,
+.form-input-login input[type="email"]:focus,
+.form-input-login input[type="password"]:focus {
+    outline: none;
+    border-bottom: 1px solid #1e90ff;
+} */
+
+.placeholder-text-login {
+    position: absolute;
+    top: 17px;
+    left: 10px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    font-size: 13px;
+    color: #b4b4b4;
+    font-family: "Inter";
+    font-weight: 400;
+}
+
+.form-input-login input[type="text"]:focus + .placeholder-text-login,
+.form-input-login input[type="email"]:focus + .placeholder-text-login,
+.form-input-login input[type="password"]:focus + .placeholder-text-login,
+.form-input-login input[type="text"]:valid + .placeholder-text-login,
+.form-input-login input[type="email"]:valid + .placeholder-text-login,
+.form-input-login input[type="password"]:valid + .placeholder-text-login {
+    top: 27px;
+    left: 10px;
+    font-size: 10px;
+    color: #838383;
+    font-family: "Inter";
+    font-weight: 600;
+}
+
+.form-input-login input:focus + .placeholder-text-login {
+    color: #cc1b1b;
+}
+
+.form-input-login input:not(:focus):valid + .placeholder-text-login {
+    color: #2f7e48;
+}
+
+.form-input-login input:focus::placeholder {
+    color: rgb(70, 70, 70);
+    transform: translateY(14px);
+    transition: all 0.3s ease;
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.reg-user {
+    margin-top: 10px;
+    background-color: #ffffff;
+    color: #4f4f4f;
+    width: 100%;
+    height: 45px;
+    padding: 10px 10px 10px 10px;
+    outline: 0;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 10px;
+}
+
+.submit-login {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 57px;
+    background: rgb(240, 33, 33);
+    border-radius: 10px;
+    border: 0;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.submit-login:hover {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 57px;
+    background: rgb(205, 27, 27);
+    border-radius: 10px;
+    border: 0;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.checking-have-account-or-not-login {
+    text-align: center;
+}
+
+.signin-login {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+.signin-link-login {
+    color: red;
+    text-decoration: underline;
+}
+
+
