@@ -976,7 +976,7 @@ header {
 
 .placeholder-text-login {
     position: absolute;
-    top: 10px;
+    top: 17px;
     left: 10px;
     pointer-events: none;
     transition: 0.2s ease all;
@@ -1076,3 +1076,5 @@ header {
     color: red;
     text-decoration: underline;
 }
+
+
