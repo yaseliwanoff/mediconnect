@@ -4,16 +4,33 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.forms.widgets import DateInput
 
 
+# class RegisterUserForm(UserCreationForm):
+#     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user'}))
+#     first_name = forms.CharField(label='First name', widget=forms.TextInput(attrs={'class': 'reg-user'}))
+#     last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'reg-user'}))
+#     date_of_birth = forms.DateField(label='Date of birth', widget=DateInput(
+#         attrs={'class': 'reg-user', 'type': 'date'}))
+#     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'reg-user'}))
+#     phone_number = forms.CharField(label='Phone number', widget=forms.TextInput(attrs={'class': 'reg-user'}))
+#     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'reg-user'}))
+#     password2 = forms.CharField(label='Password repeat', widget=forms.PasswordInput(attrs={'class': 'reg-user'}))
+
+#     class Meta:
+#         model = User
+#         fields = (
+#         'first_name', 'last_name', 'date_of_birth', 'email', 'phone_number', 'username', 'password1', 'password2')
+
+
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user'}))
-    first_name = forms.CharField(label='First name', widget=forms.TextInput(attrs={'class': 'reg-user'}))
-    last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'reg-user'}))
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+    first_name = forms.CharField(label='First name', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+    last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
     date_of_birth = forms.DateField(label='Date of birth', widget=DateInput(
-        attrs={'class': 'reg-user', 'type': 'date'}))
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'reg-user'}))
-    phone_number = forms.CharField(label='Phone number', widget=forms.TextInput(attrs={'class': 'reg-user'}))
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'reg-user'}))
-    password2 = forms.CharField(label='Password repeat', widget=forms.PasswordInput(attrs={'class': 'reg-user'}))
+        attrs={'class': 'reg-user', 'type': 'date', 'placeholder': ''}))
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+    phone_number = forms.CharField(label='Phone number', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+    password2 = forms.CharField(label='Password repeat', widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': ''}))
 
     class Meta:
         model = User
@@ -22,8 +39,8 @@ class RegisterUserForm(UserCreationForm):
 
 
 class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user'}))
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'reg-user'}))
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': ''}))
 
 
 class AppointmentForm(forms.ModelForm):
