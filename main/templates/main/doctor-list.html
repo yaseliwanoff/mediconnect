@@ -4,16 +4,35 @@
 
 
 {% block body %}
-<h1>Doctor List</h1>
-    <form method="get">
+<div class="doctor__list container">
+    <h1>Doctor List</h1>
+    <form method="get" class="doctor__form">
         {{ filter_form.as_p }}
-        <button type="submit">Choose</button>
-    </form>
-    {% for doctor in doctors %}
-        <div>
-            <h2>{{ doctor.first_name }} {{ doctor.last_name }}</h2>
-            <p>{{ doctor.specialization }}</p>
-            <a href="{% url 'DocInfo' doctor_id=doctor.id %}">Learn More</a>
+        <div class="doctor__list__button">
+            <button type="submit">Choose</button>
         </div>
-    {% endfor %}
+    </form>
+    <div class="doctors">
+        {% for doctor in doctors %}
+            <div class="doctor__card">
+                <div class="doctor__list__img">
+                    <img src="{{ doctor.photo.url }}" alt="doctor image" class="doctor__photo">
+                </div>
+                <div class="doctors__text">
+                    <div class="doctors__text__name">
+                        <h2>{{ doctor.first_name }} {{ doctor.last_name }}</h2>
+                    </div>
+                    <div class="doctors__text__specialization">
+                        <p>{{ doctor.specialization }}</p>
+                    </div>
+                </div>
+                <div class="doctor__list__button__doctor">
+                    <button>
+                        <a href="{% url 'DocInfo' doctor_id=doctor.id %}">Learn More</a>
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
