@@ -1,4 +1,7 @@
 from django import forms
+from .models import SpecializationCategory
+
+from django import forms
 from .models import Appointment, User, SpecializationCategory, Callback, Doctor, AppointmentTime
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.forms.widgets import DateInput
@@ -26,7 +29,7 @@ class RegisterUserForm(UserCreationForm):
     first_name = forms.CharField(label='First name', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
     last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
     date_of_birth = forms.DateField(label='Date of birth', widget=DateInput(
-        attrs={'class': 'reg-user', 'type': 'date', 'placeholder': ''}))
+                                                                            attrs={'class': 'reg-user', 'type': 'date', 'placeholder': ''}), initial=None, required=False)
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'reg-user', 'placeholder': ''}))
     phone_number = forms.CharField(label='Phone number', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': ''}))
@@ -66,6 +69,11 @@ class AppointmentForm(forms.ModelForm):
 class DoctorFilterForm(forms.Form):
     specialization = forms.ModelChoiceField(queryset=SpecializationCategory.objects.all(), label='Specialization',
                                             empty_label='All', required=False)
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        #.
+        self.fields['specialization'].attrs = {'class': 'filter'}
 
 
 class AppointmentDoctorFilterForm(forms.Form):

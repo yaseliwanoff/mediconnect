@@ -175,7 +175,7 @@ header {
     transition: opacity 0.3s ease;
 }
 
-.header__logout {
+.header__login__button {
     cursor: pointer;
     justify-content: flex-start;
     align-items: flex-start;
@@ -191,7 +191,7 @@ header {
     line-height: 17px;
 }
 
-.header__logout button:hover {
+.header__login__button:hover {
     cursor: pointer;
     justify-content: flex-start;
     align-items: flex-start;
@@ -355,7 +355,6 @@ header {
 }
 
 .doctors__list__info__card__text__firstnameANDlastname {
-    width: 160px;
     color: rgb(50, 50, 50);
     font-family: "Inter";
     font-size: 17px;
@@ -921,6 +920,10 @@ header {
     text-decoration: underline;
 }
 
+.form-input input[type="date"]::placeholder {
+    content: ""; /* Убираем текст placeholder */
+}
+
 /* ----------------------------------------------- авторизация */
 
 .form-login {
@@ -1077,4 +1080,179 @@ header {
     text-decoration: underline;
 }
 
+/* ----------------------------------------------- Лист докторов */
 
+/* .filter {
+    font-family: "Inter";
+    font-weight: 400;
+    color: rgb(144, 145, 145);
+    width: 100px;
+} */
+
+.doctor__list {
+    margin-top: 99px;
+}
+
+.doctor__list h1 {
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 30px;
+
+    height: 40px;
+}
+
+.doctors {
+    display: flex;
+    margin-top: 60px;
+}
+
+.doctor__list__button button {
+    margin-top: 10px;
+    cursor: pointer;
+    width: 106px;
+    height: 45px;
+    padding: 13px 25px 14px 25px;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(250, 250, 250);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.doctor__list__button button:hover {
+    margin-top: 10px;
+    cursor: pointer;
+    width: 106px;
+    height: 45px;
+    padding: 13px 25px 14px 25px;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(250, 250, 250);
+
+    color: rgb(78, 78, 78);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.doctor__card {
+    margin-right: 20px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 340px;
+    height: 484px;
+    box-sizing: border-box;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 20px;
+    background: rgb(250, 250, 250);
+    transition: opacity 2.2s ease;
+}
+
+.doctor__list__img img {
+    width: 280px;
+    height: 286px;
+    border-radius: 20px;
+}
+
+.doctors__text__name {
+    margin-top: 15px;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.doctors__text__specialization {
+    margin-top: 5px;
+    color: rgb(144, 145, 145);
+    font-family: "Inter";
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 12px;
+}
+
+.doctor__list__button__doctor button {
+    cursor: pointer;
+    margin-top: 35px;
+    width: 100%;
+    height: 57px;
+    padding: 20px 92px 20px 92px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(240, 33, 33);
+    transition: 0.3s ease all;
+}
+
+.doctor__list__button__doctor a {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-decoration: none;
+}
+
+.doctor__list__button__doctor button:hover {
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    height: 57px;
+    padding: 20px 92px 20px 92px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(206, 28, 28);
+}
+
+/* ----------------------------------------------- Личный профиль */
+
+.doc__info {
+    margin-top: 99px;
+}
+
+.doc__info__img img {
+    width: 280px;
+    height: 286px;
+    border-radius: 20px;
+}
+
+.doc__info__text {
+    margin-top: 15px;
+}
+
+.doc__info__name {
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 19px;
+}
+
+.doc__info__about {
+    margin-top: 15px;
+    width: 450px;
+    color: rgb(144, 145, 145);
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+}
+
+.doc__info__experience {
+    margin-top: 15px;
+    width: 450px;
+    color: rgb(144, 145, 145);
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+}
