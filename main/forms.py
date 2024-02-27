@@ -61,9 +61,11 @@ class AppointmentForm(forms.ModelForm):
     def save(self, commit=True):
         instance = super().save(commit=False)
         instance.user = self.user  # Присваиваем пользователя экземпляру Appointment
+        instance.appointment_day = self.cleaned_data['day']  # Сохраняем выбранную пользователем дату
         if commit:
             instance.save()
         return instance
+
 
 
 class DoctorFilterForm(forms.Form):
