@@ -83,7 +83,7 @@ class AppointmentDoctorFilterForm(forms.Form):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
         if user:
-            self.fields['doctor'].queryset = Doctor.objects.filter(appointment__user=user).distinct()
+            self.fields['doctor'].queryset = Doctor.objects.filter(appointments__user=user).distinct()
 
 
 class CallbackForm(forms.ModelForm):

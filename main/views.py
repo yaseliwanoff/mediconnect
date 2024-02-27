@@ -120,7 +120,7 @@ class UserPageView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['doctors'] = Doctor.objects.filter(appointment__user=self.request.user).distinct()
+        context['doctors'] = Doctor.objects.filter(appointments__user=self.request.user).distinct()
         context['filter_form'] = AppointmentDoctorFilterForm(user=self.request.user)
         return context
 
@@ -134,7 +134,6 @@ class UserPageView(LoginRequiredMixin, ListView):
             return render(request, self.template_name, context)
         else:
             return self.render_to_response(self.get_context_data())
-
 
 class DoctorListView(ListView):
     model = Doctor

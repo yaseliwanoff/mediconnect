@@ -1,0 +1,27 @@
+{% extends 'staff/staff_base.html' %}
+
+
+{% block title %}Main page{% endblock %}
+
+{% block body %}
+<p>Total Number of Appointments: {{ total_appointments }}</p>
+<p>Total Price of All Appointments: {{ total_price_all }}</p>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Doctor</th>
+            <th>Client</th>
+            <th>Visit price</th>
+        </tr>
+        {% for app in appointment %}
+        <tr>
+            <td>{{ app.appointment_day }}</td>
+            <td>{{ app.appointment_time }}</td>
+            <td>{{ app.doctor }}</td>
+            <td>{{ app.user.first_name }} {{ app.user.last_name }}</td>
+            <td>{{ app.visit_price }} $</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

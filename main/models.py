@@ -17,6 +17,7 @@ class Doctor(models.Model):
     specialization = models.ForeignKey(SpecializationCategory, on_delete=models.CASCADE, related_name='doctors')
     about = models.TextField(blank=True, verbose_name='Information about doctor', max_length=600)
     experience = models.TextField(blank=True, verbose_name='Experience')
+    visit_price = models.IntegerField(verbose_name='Visit price')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -31,13 +32,13 @@ class AppointmentTime(models.Model):
 
 class Appointment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='appointments')
     appointment_day = models.DateField(default=timezone.now)
     appointment_time = models.ForeignKey(AppointmentTime, on_delete=models.CASCADE)
     time_ordered = models.DateTimeField(default=timezone.now, blank=True)
 
     def __str__(self):
-        return f"{self.doctor} | day: {self.appointment_day} | time: {self.appointment_time}"
+        return f"{self.doctor} | day: {self.appointment_day} | time: {self.appointment_time} | visit price: {self.doctor.visit_price} $"
 
 
 class Callback(models.Model):
