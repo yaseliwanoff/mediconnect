@@ -1215,6 +1215,10 @@ header {
 
 /* ----------------------------------------------- Личный профиль */
 
+.specialization-field {
+    width: 50%;
+}
+
 .doc__info {
     margin-top: 99px;
 }
