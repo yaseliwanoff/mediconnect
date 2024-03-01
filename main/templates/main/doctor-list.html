@@ -27,9 +27,9 @@
                     </div>
                 </div>
                 <div class="doctor__list__button__doctor">
-                    <button>
-                        <a href="{% url 'DocInfo' doctor_id=doctor.id %}">Learn More</a>
-                    </button>
+                    <a href="{% url 'DocInfo' doctor_id=doctor.id %}">
+                        <button>Learn More</button>
+                    </a>
                 </div>
             </div>
         {% endfor %}

@@ -1181,6 +1181,7 @@ header {
 }
 
 .doctor__list__button__doctor button {
+    color: white;
     cursor: pointer;
     margin-top: 35px;
     width: 100%;
@@ -1215,6 +1216,10 @@ header {
 
 /* ----------------------------------------------- Личный профиль */
 
+.specialization-field {
+    width: 50%;
+}
+
 .doc__info {
     margin-top: 99px;
 }
@@ -1226,7 +1231,11 @@ header {
 }
 
 .doc__info__text {
+    position: relative;
+    top: -300px;
     margin-top: 15px;
+    float: right;
+    margin-right: 640px;
 }
 
 .doc__info__name {
@@ -1242,7 +1251,7 @@ header {
     width: 450px;
     color: rgb(144, 145, 145);
     font-family: "Inter";
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 15px;
 }
@@ -1252,7 +1261,24 @@ header {
     width: 450px;
     color: rgb(144, 145, 145);
     font-family: "Inter";
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 15px;
+}
+
+.formis__text {
+    margin-top: 65px;
+    font-family: "Inter";
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/* .forms {
+    position: relative;
+    top: -200px;
+} */
+
+.forms__label {
+    position: relative;
+    top: -150px;
 }
