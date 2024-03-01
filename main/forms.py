@@ -47,8 +47,8 @@ class LoginUserForm(AuthenticationForm):
 
 
 class AppointmentForm(forms.ModelForm):
-    day = forms.DateField(label='Appointment day', widget=forms.TextInput(attrs={'type': 'date'}))
-    time = forms.ModelChoiceField(queryset=AppointmentTime.objects.all(), label='Appointment time', required=False)
+    day = forms.DateField(label='', widget=forms.TextInput(attrs={'type': 'date'}))
+    time = forms.ModelChoiceField(queryset=AppointmentTime.objects.all(), label='', required=False)
 
     class Meta:
         model = Appointment

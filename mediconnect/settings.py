@@ -80,7 +80,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'django',  # БД
        'USER': 'super_django',  # СуперЮзер для БД
-       'PASSWORD': 'test',
+       'PASSWORD': 'wsx3edc4',
        'HOST': 'localhost',
        'PORT': '5432',
    }
