@@ -19,16 +19,78 @@
             </div>
         </div>
        <form method="post" action="{% url 'DocInfo' doctor_id=doctor.id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <button type="submit">Submit</button>
+        <div class="formis">
+            <div class="formis__text">
+                Make an <br> 
+                appointment
+            </div>
+            <div class="forms__label">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="forms">
+                <style>
+                    input[type="date"] {
+                        width: 430px;
+                        height: 50px;
+                        padding: 14px 25px 14px 25px;
+                        box-sizing: border-box;
+                        border: 0.2px solid rgb(213, 213, 213);
+                        border-radius: 5px;
+                        background: rgb(255, 255, 255);
+                        color: rgb(121, 121, 121);
+                        font-family: "Inter";
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                </style>
+                <style>
+                    select {
+                        width: 430px;
+                        height: 50px;
+                        padding: 14px 25px 14px 25px;
+                        box-sizing: border-box;
+                        border: 0.2px solid rgb(213, 213, 213);
+                        border-radius: 5px;
+                        margin-top: 10px;
+                        background: rgb(255, 255, 255);
+                        color: rgb(121, 121, 121);
+                        font-family: "Inter";
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 17px;
+                    }
+                </style>
+                <style>
+                    button {
+                        background-color: #fbfbfb;
+                        border-radius: 10px;
+                        border: none;
+                        border: 0.2px solid rgb(213, 213, 213);
+                        padding: 15px 25px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        margin-top: 10px;
+                        cursor: pointer;
+                        color: rgb(121, 121, 121);
+                        font-family: "Inter";
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 17px;
+                    }
+                </style>
+                <button type="submit">Submit</button>
+            </div>
+            </div>
+        </div>
     </form>
     </div>
 {% endblock %}
