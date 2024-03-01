@@ -12,8 +12,9 @@
 <body>
 <div class="header">
     | <a href="{% url 'AdminMain' %}">Appointments</a> |
-    <a href="#">Chats</a> |
-    <a href="#">Analytics</a> |
+    <a href="{% url 'Chat' %}">Chats</a> |
+    <a href="{% url 'Callback' %}">Callbacks</a> |
+    <a href="{% url 'Analytics' %}">Analytics</a> |
 </div>
 {% block body %}
 {% endblock %}

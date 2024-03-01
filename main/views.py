@@ -113,6 +113,7 @@ def my_logout_view(request):
 class UserPageView(LoginRequiredMixin, ListView):
     template_name = 'main/user-appointments.html'
     context_object_name = 'appointments'
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = Appointment.objects.filter(user=self.request.user)
