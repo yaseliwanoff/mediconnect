@@ -1079,12 +1079,57 @@ header {
 
 /* ----------------------------------------------- Лист докторов */
 
+.button {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: "Inter";
+    transition: all .2s;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(240, 33, 33);
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
+
+.arr-1 path {
+    fill: rgb(255, 255, 255);
+}
+  
+.button:hover {
+    background: rgb(214, 28, 28);
+}
+  
+.button > svg {
+    width: 25px;
+    margin-left: 10px;
+    transition: transform .3s ease-in-out;
+}
+  
+.button:hover svg {
+    transform: translateX(5px);
+}
+
+
 /* .filter {
     font-family: "Inter";
     font-weight: 400;
     color: rgb(144, 145, 145);
     width: 100px;
 } */
+
+.doctor__form {
+    display: flex;
+    align-items: center;
+}
+
+.doctor__list__button {
+    margin-left: 10px;
+    margin-right: auto;
+}
 
 label[for="id_specialization"] {
     font-family: "Inter";
@@ -1127,10 +1172,10 @@ select[id="id_specialization"] {
     padding: 13px 25px 14px 25px;
     box-sizing: border-box;
     border-radius: 5px;
-    border: 1px solid rgb(243, 33, 33);
-    background: rgb(255, 255, 255);
+    border: 0;
+    background: rgb(243, 33, 33);
 
-    color: rgb(243, 33, 33);
+    color: rgb(255, 255, 255);
     font-family: "Inter";
     font-size: 14px;
     font-weight: 500;
@@ -1146,7 +1191,7 @@ select[id="id_specialization"] {
     padding: 13px 25px 14px 25px;
     box-sizing: border-box;
     border-radius: 5px;
-    background: rgb(212, 30, 30);
+    background: rgb(199, 30, 30);
 
     color: rgb(255, 255, 255);
     font-family: "Inter";
