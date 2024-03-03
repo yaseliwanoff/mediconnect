@@ -3,4 +3,4 @@ __pycache__
 db.sqlite3
 /env
 *.env
-0001_initial.py
+000*

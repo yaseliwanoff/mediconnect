@@ -53,7 +53,6 @@ class Callback(models.Model):
 
 class Room(models.Model):
     name = models.CharField(max_length=20)
-    slug = models.SlugField(max_length=10)
 
     def __str__(self):
         return f"{self.name}"

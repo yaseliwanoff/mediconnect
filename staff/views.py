@@ -1,39 +1,59 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
+from django.views import View
 from django.views.generic import ListView
 from main.models import Appointment, Room
 from django.db.models import Sum
+from .forms import DateSelectForm
+from datetime import datetime
+from django.urls import reverse
 
 
 class Main(ListView):
     template_name = 'staff/main_page.html'
     context_object_name = 'appointment'
     paginate_by = 3
+    form_class = DateSelectForm
 
     def get_queryset(self):
-        return Appointment.objects.all()
+        queryset = Appointment.objects.all()
+        selected_date = self.request.GET.get('selected_date')
+        if selected_date:
+            queryset = queryset.filter(appointment_day=selected_date)
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Вычисляем общее количество записей
-        total_appointments = Appointment.objects.count()
-        # Вычисляем сумму цен всех записей
-        total_price_all = Appointment.objects.aggregate(total_price=Sum('doctor__visit_price'))['total_price']
-        # Передаем значения в контекст шаблона
-        context['total_appointments'] = total_appointments
-        context['total_price_all'] = total_price_all or 0  # Если нет записей, установите значение по умолчанию как 0
+        context['filter_form'] = self.get_form()
+        context['total_appointments'] = Appointment.objects.count()
+        context['total_price_all'] = Appointment.objects.aggregate(total_price=Sum('doctor__visit_price'))[
+                                         'total_price'] or 0
         return context
 
+    def get_form(self):
+        return self.form_class(self.request.GET)
 
-def chat(request):
-    rooms = Room.objects.all()
-    return render(request, 'staff/chat.html', {
-        "rooms": rooms
-    })
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            selected_date = form.cleaned_data['selected_date']
+            if selected_date:
+                return HttpResponseRedirect(reverse('AdminMain') + f'?selected_date={selected_date}')
+        return self.get(request, *args, **kwargs)
 
 
-def room(request, slug):
-    context = {"slug": slug}
-    return render(request, 'staff/room.html', context)
+class ChatView(ListView):
+    template_name = 'staff/chat.html'
+    context_object_name = 'rooms'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return Room.objects.all()
+
+
+class RoomView(View):
+    def get(self, request, room_id):
+        room = Room.objects.get(id=room_id)
+        return render(request, 'staff/room.html', {'room': room})
 
 
 def analytics(request):

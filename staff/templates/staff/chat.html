@@ -13,7 +13,7 @@
                     <div class="card-block">
                         <h3 class="card-title">{{room.name}}</h3>
                         <p class="card-text">It is Public group for this Project.</p>
-                        <a href="/{{room.slug}}" class="btn btn-outline-secondary">Go to Room</a>
+                        <a href="{% url 'Room' room_id=room.id %}" class="btn btn-outline-secondary">Go to Room</a>
                     </div>
                 </div>
             </div>

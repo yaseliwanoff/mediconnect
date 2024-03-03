@@ -78,5 +78,7 @@ class CallbackForm(forms.ModelForm):
         model = Callback
         fields = ('name', 'email', 'phone', 'date')
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date'}),  # Используем HTML элемент input типа date
+            'date': forms.DateInput(attrs={'type': 'date'}),
         }
+
+
