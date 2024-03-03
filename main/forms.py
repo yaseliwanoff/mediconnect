@@ -54,7 +54,7 @@ class AppointmentForm(forms.ModelForm):
 
 
 class DoctorFilterForm(forms.Form):
-    specialization = forms.ModelChoiceField(queryset=SpecializationCategory.objects.all(), label='Specialization',
+    specialization = forms.ModelChoiceField(queryset=SpecializationCategory.objects.all(), label='',
                                             empty_label='All', required=False)
 
     def __init__(self, *args, **kwargs):
