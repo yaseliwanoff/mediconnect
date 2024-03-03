@@ -257,18 +257,15 @@ header {
     height: 57px;
     border: 0;
 
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    text-decoration: none;
+    list-style-type: none;
     font-size: 14px;
     font-weight: 500;
     line-height: 17px;
     letter-spacing: 0px;
     padding: 20px 92px 20px 92px;
-}
-
-.main__screen__text__subtitle__button a {
-    color: rgb(255, 255, 255);
-    font-family: "Inter";
-    text-decoration: none;
-    list-style-type: none;
 }
 
 .main__screen_image {
@@ -1089,6 +1086,22 @@ header {
     width: 100px;
 } */
 
+label[for="id_specialization"] {
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+}
+
+select[id="id_specialization"] {
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 14px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
 .doctor__list {
     margin-top: 99px;
 }
@@ -1113,15 +1126,16 @@ header {
     height: 45px;
     padding: 13px 25px 14px 25px;
     box-sizing: border-box;
-    border: 0.2px solid rgb(213, 213, 213);
     border-radius: 5px;
-    background: rgb(250, 250, 250);
+    border: 1px solid rgb(243, 33, 33);
+    background: rgb(255, 255, 255);
 
-    color: rgb(121, 121, 121);
+    color: rgb(243, 33, 33);
     font-family: "Inter";
     font-size: 14px;
     font-weight: 500;
     line-height: 17px;
+    transition: 0.2s ease;
 }
 
 .doctor__list__button button:hover {
@@ -1131,16 +1145,14 @@ header {
     height: 45px;
     padding: 13px 25px 14px 25px;
     box-sizing: border-box;
-    border: 0.2px solid rgb(213, 213, 213);
     border-radius: 5px;
-    background: rgb(250, 250, 250);
+    background: rgb(212, 30, 30);
 
-    color: rgb(78, 78, 78);
+    color: rgb(255, 255, 255);
     font-family: "Inter";
     font-size: 14px;
     font-weight: 500;
     line-height: 17px;
-    transition: opacity 0.3s ease;
 }
 
 .doctor__card {
@@ -1241,9 +1253,9 @@ header {
 .doc__info__name {
     color: rgb(50, 50, 50);
     font-family: "Inter";
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 600;
-    line-height: 19px;
+    line-height: 30px;
 }
 
 .doc__info__about {
@@ -1278,7 +1290,8 @@ header {
     top: -200px;
 } */
 
-.forms__label {
-    position: relative;
-    top: -150px;
+.formis {
+    position: absolute;
+    margin-top: -350px;
+    margin-left: 990px;
 }
