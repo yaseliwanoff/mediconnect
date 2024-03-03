@@ -9,7 +9,7 @@
         </div>
         <div class="doc__info__text">
             <div class="doc__info__name">
-                {{ doctor.first_name }} {{ doctor.last_name }}
+                {{ doctor.first_name }} <br> {{ doctor.last_name }}
             </div>
             <div class="doc__info__about">
                 <p>{{ doctor.about }}</p>
@@ -30,13 +30,14 @@
                 {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                     {% endfor %}
                 </ul>
             {% endif %}
             <div class="forms">
                 <style>
                     input[type="date"] {
+                        margin-top: 15px;
                         width: 430px;
                         height: 50px;
                         padding: 14px 25px 14px 25px;
