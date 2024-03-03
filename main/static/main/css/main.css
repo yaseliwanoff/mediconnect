@@ -1144,7 +1144,7 @@ select[id="id_specialization"] {
     background-color: #ffffff;
     border-radius: 5px;
     border: 1px solid #ccc;
-    padding: 5px;
+    padding: 12px 5px;
 }
 
 .doctor__list {
