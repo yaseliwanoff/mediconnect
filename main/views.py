@@ -12,7 +12,7 @@ from django.contrib import messages
 
 
 class Main(ListView):
-    template_name = 'main/main-staff.html'
+    template_name = 'main/main-page.html'
     context_object_name = 'doctors'
 
     def get_queryset(self):
