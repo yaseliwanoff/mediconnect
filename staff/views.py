@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.views import View
 from django.views.generic import ListView
-from main.models import Appointment, Room
+from main.models import Appointment, Room, Callback
 from django.db.models import Sum
 from .forms import DateSelectForm
 from datetime import datetime
@@ -97,8 +97,14 @@ def analytics(request):
     return render(request, 'staff/analytics.html')
 
 
-def callback(request):
-    return render(request, 'staff/callback.html')
+class CallbackView(ListView):
+    model = Callback
+    template_name = 'staff/callback.html'
+    context_object_name = 'callbacks'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Callback.objects.all()
 
 
 class DoctorAppointmentView(ListView):
