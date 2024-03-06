@@ -1,11 +1,9 @@
 {% extends 'staff/staff-base.html' %}
 
-{% block title %}Main page{% endblock %}
+{% block title %}Doctor appointments{% endblock %}
+
 
 {% block body %}
-
-<a href="{% url 'AppHistory' %}">All appointments</a>
-
 <form method="get">
     {% csrf_token %}
     {{ filter_form.as_p }}
@@ -23,7 +21,7 @@
         <th>Client</th>
         <th>Visit price</th>
     </tr>
-    {% for app in appointment %}
+    {% for app in doctor_appointments %}
     <tr>
         <td>{{ app.appointment_day }}</td>
         <td>{{ app.appointment_time }}</td>
@@ -61,11 +59,4 @@
     </span>
 </div>
 {% endif %}
-
-<ul>
-  {% for doctor in doctors %}
-    <li><a href="{% url 'DocAnalytics' doctor_id=doctor.id %}"><img src="{{ doctor.photo.url }}" alt="doctor image" class="doctor__photo">{{ doctor.first_name }} {{ doctor.last_name }}</a></li>
-  {% endfor %}
-</ul>
-
 {% endblock %}
