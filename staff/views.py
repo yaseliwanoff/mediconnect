@@ -63,7 +63,8 @@ class AppointmentHistoryView(ListView):
         selected_date = self.request.GET.get('selected_date')
         context['filter_form'] = self.get_form()
         context['total_appointments'] = Appointment.objects.count()
-        context['total_price_all'] = Appointment.objects.aggregate(total_price=Sum('doctor__visit_price'))['total_price'] or 0
+        context['total_price_all'] = Appointment.objects.aggregate(total_price=Sum('doctor__visit_price'))[
+                                         'total_price'] or 0
         context['doctors'] = Doctor.objects.all()
         return context
 
@@ -77,6 +78,7 @@ class AppointmentHistoryView(ListView):
             if selected_date:
                 return HttpResponseRedirect(reverse('AdminMain') + f'?selected_date={selected_date}')
         return self.get(request, *args, **kwargs)
+
 
 class ChatView(ListView):
     template_name = 'staff/chat.html'
@@ -99,12 +101,36 @@ def analytics(request):
 
 class CallbackView(ListView):
     model = Callback
-    template_name = 'staff/callback.html'
     context_object_name = 'callbacks'
+    template_name = 'staff/callback.html'
     paginate_by = 10
+    form_class = DateSelectForm
 
     def get_queryset(self):
-        return Callback.objects.all()
+        queryset = Callback.objects.all()
+        selected_date = self.request.GET.get('selected_date')
+        if selected_date:
+            queryset = queryset.filter(date=selected_date)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        selected_date = self.request.GET.get('selected_date')
+        context['filter_form'] = self.get_form()
+        context['callbacks_today'] = Callback.objects.filter(date=selected_date).count()
+        context['total_callbacks'] = Callback.objects.count()
+        return context
+
+    def get_form(self):
+        return self.form_class(self.request.GET)
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            selected_date = form.cleaned_data['selected_date']
+            if selected_date:
+                return HttpResponseRedirect(reverse('AdminMain') + f'?selected_date={selected_date}')
+        return self.get(request, *args, **kwargs)
 
 
 class DoctorAppointmentView(ListView):
@@ -134,6 +160,3 @@ class DoctorAppointmentView(ListView):
 
     def get_form(self):
         return DateSelectForm(self.request.GET)
-
-
-

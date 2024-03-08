@@ -13,7 +13,7 @@
 </form>
 
 <p>Total Number of Appointments: {{ total_appointments }}</p>
-<p>Total Price of All Appointments: {{ total_price_all }}</p>
+<p>Total Price of All Appointments: {{ total_price_all }}$</p>
 
 <table>
     <tr>
@@ -29,7 +29,7 @@
         <td>{{ app.appointment_time }}</td>
         <td>{{ app.doctor }}</td>
         <td>{{ app.user.get_full_name }}</td>
-        <td>{{ app.doctor.visit_price }} $</td>
+        <td>{{ app.doctor.visit_price }}$</td>
     </tr>
     {% empty %}
     <tr>
