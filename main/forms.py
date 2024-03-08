@@ -5,20 +5,20 @@ from django.forms.widgets import DateInput
 
 
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
     first_name = forms.CharField(label='First name',
-                                 widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+                                 widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
     last_name = forms.CharField(label='Last name',
-                                widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+                                widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
     date_of_birth = forms.DateField(label='Date of birth', widget=DateInput(
-        attrs={'class': 'reg-user', 'type': 'date', 'placeholder': ''}), initial=None, required=False)
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+        attrs={'class': 'reg-user', 'type': 'date', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}), initial=None, required=False)
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
     phone_number = forms.CharField(label='Phone number',
-                                   widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+                                   widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
     password1 = forms.CharField(label='Password',
-                                widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+                                widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
     password2 = forms.CharField(label='Password repeat',
-                                widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+                                widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
 
     class Meta:
         model = User
@@ -27,9 +27,9 @@ class RegisterUserForm(UserCreationForm):
 
 
 class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
     password = forms.CharField(label='Password',
-                               widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': ''}))
+                               widget=forms.PasswordInput(attrs={'class': 'reg-user', 'placeholder': '', 'style': 'font-family: "Inter"; font-size: 14px; font-weight: 500;'}))
 
 
 class AppointmentForm(forms.ModelForm):
