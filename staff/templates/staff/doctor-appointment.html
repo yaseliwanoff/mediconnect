@@ -1,28 +1,39 @@
 {% extends 'staff/staff-base.html' %}
 
-{% block title %}Callbacks{% endblock %}
+{% block title %}Doctor appointments{% endblock %}
+
 
 {% block body %}
+<form method="get">
+    {% csrf_token %}
+    {{ filter_form.as_p }}
+    <button type="submit">Filter</button>
+</form>
 
-{% for item in callbacks %}
+<p>Total Number of Appointments: {{ total_appointments }}</p>
+<p>Total Price of All Appointments: {{ total_price_all }}</p>
+
 <table>
     <tr>
         <th>Date</th>
-        <th>Name</th>
-        <th>Mail</th>
-        <th>Phone</th>
+        <th>Time</th>
+        <th>Doctor</th>
+        <th>Client</th>
+        <th>Visit price</th>
     </tr>
+    {% for app in doctor_appointments %}
     <tr>
-        <td>{{ item.date }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.email }}</td>
-        <td>{{ item.phone }}</td>
+        <td>{{ app.appointment_day }}</td>
+        <td>{{ app.appointment_time }}</td>
+        <td>{{ app.doctor }}</td>
+        <td>{{ app.user.get_full_name }}</td>
+        <td>{{ app.doctor.visit_price }} $</td>
     </tr>
     {% empty %}
     <tr>
-        <td colspan="5">You have not any callbacks.</td>
+        <td colspan="5">No appointments available for the selected date.</td>
     </tr>
-{% endfor %}
+    {% endfor %}
 </table>
 
 {% if is_paginated %}
@@ -48,6 +59,4 @@
     </span>
 </div>
 {% endif %}
-
 {% endblock %}
-
