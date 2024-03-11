@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.views import View
 from django.views.generic import ListView
-from main.models import Appointment, Room, Callback
+from main.models import Appointment, Callback
 from django.db.models import Sum
 from .forms import DateSelectForm
 from datetime import datetime
@@ -78,21 +78,6 @@ class AppointmentHistoryView(ListView):
             if selected_date:
                 return HttpResponseRedirect(reverse('AdminMain') + f'?selected_date={selected_date}')
         return self.get(request, *args, **kwargs)
-
-
-class ChatView(ListView):
-    template_name = 'staff/chat.html'
-    context_object_name = 'rooms'
-    paginate_by = 5
-
-    def get_queryset(self):
-        return Room.objects.all()
-
-
-class RoomView(View):
-    def get(self, request, room_id):
-        room = Room.objects.get(id=room_id)
-        return render(request, 'staff/room.html', {'room': room})
 
 
 def analytics(request):

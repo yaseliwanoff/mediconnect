@@ -136,6 +136,7 @@ class UserPageView(LoginRequiredMixin, ListView):
         else:
             return self.render_to_response(self.get_context_data())
 
+
 class DoctorListView(ListView):
     model = Doctor
     template_name = 'main/doctor-list.html'
