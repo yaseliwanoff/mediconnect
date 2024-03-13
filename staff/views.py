@@ -1,8 +1,9 @@
+from django.db.models.functions import TruncDay
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.views import View
 from django.views.generic import ListView
 from main.models import Appointment, Callback
-from django.db.models import Sum
+from django.db.models import Sum, Count
 from .forms import DateSelectForm
 from datetime import datetime
 from django.urls import reverse
@@ -27,7 +28,7 @@ class MainPageView(ListView):
         selected_date = self.request.GET.get('selected_date')
         context['filter_form'] = self.get_form()
         context['total_appointments'] = Appointment.objects.filter(appointment_day=selected_date).count()
-        context['total_price_all'] = Appointment.objects.filter(appointment_day=selected_date).aggregate(
+        context['total_revenue_all'] = Appointment.objects.filter(appointment_day=selected_date).aggregate(
             total_price=Sum('doctor__visit_price'))['total_price'] or 0
         context['doctors'] = Doctor.objects.all()
         return context
@@ -63,8 +64,8 @@ class AppointmentHistoryView(ListView):
         selected_date = self.request.GET.get('selected_date')
         context['filter_form'] = self.get_form()
         context['total_appointments'] = Appointment.objects.count()
-        context['total_price_all'] = Appointment.objects.aggregate(total_price=Sum('doctor__visit_price'))[
-                                         'total_price'] or 0
+        context['total_revenue_all'] = Appointment.objects.aggregate(total_price=Sum('doctor__visit_price'))[
+                                           'total_price'] or 0
         context['doctors'] = Doctor.objects.all()
         return context
 
@@ -78,10 +79,6 @@ class AppointmentHistoryView(ListView):
             if selected_date:
                 return HttpResponseRedirect(reverse('AdminMain') + f'?selected_date={selected_date}')
         return self.get(request, *args, **kwargs)
-
-
-def analytics(request):
-    return render(request, 'staff/analytics.html')
 
 
 class CallbackView(ListView):
@@ -145,3 +142,41 @@ class DoctorAppointmentView(ListView):
 
     def get_form(self):
         return DateSelectForm(self.request.GET)
+
+
+class Analytics(ListView):
+    template_name = 'staff/analytics.html'
+    context_object_name = 'appointments'
+
+    def get_queryset(self):
+        return Appointment.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total_appointments'] = Appointment.objects.filter().count()
+        context['total_revenue_all'] = Appointment.objects.filter().aggregate(
+            total_price=Sum('doctor__visit_price'))['total_price'] or 0
+        context['doctors'] = Doctor.objects.all()
+        appointments_per_day = Appointment.objects.annotate(day=TruncDay('appointment_day')).values('day').annotate(
+            count=Count('id')).order_by()
+        total_apppointment_days = appointments_per_day.count()
+        total_appointments = context['total_appointments']
+        if total_apppointment_days > 0:
+            average = total_appointments / total_apppointment_days
+            context['average_appointments_per_day'] = round(average, 1)
+
+        else:
+            context['average_appointments_per_day'] = 0
+
+        revenue_per_day = Appointment.objects.annotate(day=TruncDay('appointment_day')).values('day').annotate(
+            daily_revenue=Sum('doctor__visit_price')).order_by()
+        total_revenue_days = revenue_per_day.count()
+        total_revenue = sum(item['daily_revenue'] for item in revenue_per_day if item['daily_revenue'])
+
+        if total_revenue_days > 0:
+            average_revenue = total_revenue / total_revenue_days
+            context['average_revenue_per_day'] = round(average_revenue, 1)
+        else:
+            context['average_revenue_per_day'] = 0
+
+        return context
