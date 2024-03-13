@@ -154,6 +154,7 @@ class Analytics(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['total_appointments'] = Appointment.objects.filter().count()
+        context['total_callbacks'] = Callback.objects.filter().count()
         context['total_revenue_all'] = Appointment.objects.filter().aggregate(
             total_price=Sum('doctor__visit_price'))['total_price'] or 0
         context['doctors'] = Doctor.objects.all()
@@ -178,5 +179,15 @@ class Analytics(ListView):
             context['average_revenue_per_day'] = round(average_revenue, 1)
         else:
             context['average_revenue_per_day'] = 0
+
+        average_callback_per_day = Callback.objects.annotate(day=TruncDay('date')).values('day').annotate(
+            count=Count('id')).order_by()
+        total_callback_day = average_callback_per_day.count()
+        total_callback = context['total_callbacks']
+        if total_callback_day > 0:
+            average = total_callback / total_callback_day
+            context['average_callback_per_day'] = round(average, 1)
+        else:
+            context['average_callback_per_day'] = 0
 
         return context
