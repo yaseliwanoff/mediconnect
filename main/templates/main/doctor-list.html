@@ -4,17 +4,40 @@
 
 
 {% block body %}
-<h1>Doctor List</h1>
-    <form method="get">
+<div class="doctor__list container">
+    <h1>Doctor List</h1>
+    <form method="get" class="doctor__form">
         {{ filter_form.as_p }}
-        <button type="submit">Filter</button>
+        <button class="button">
+            <span>Choose</span>
+            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                ></path>
+            </svg>
+        </button>
     </form>
-    {% for doctor in doctors %}
-        <div>
-            <h2>{{ doctor.first_name }} {{ doctor.last_name }}</h2>
-            <p>Specialization: {{ doctor.specialization }}</p>
-            <p>Experience: {{ doctor.experience }}</p>
-            <p>Price: {{ doctor.price }}</p>
-        </div>
-    {% endfor %}
+    <div class="doctors">
+        {% for doctor in doctors %}
+            <div class="doctor__card">
+                <div class="doctor__list__img">
+                    <img src="{{ doctor.photo.url }}" alt="doctor image" class="doctor__photo">
+                </div>
+                <div class="doctors__text">
+                    <div class="doctors__text__name">
+                        <h2>{{ doctor.first_name }} {{ doctor.last_name }}</h2>
+                    </div>
+                    <div class="doctors__text__specialization">
+                        <p>{{ doctor.specialization }}</p>
+                    </div>
+                </div>
+                <div class="doctor__list__button__doctor">
+                    <a href="{% url 'DocInfo' doctor_id=doctor.id %}">
+                        <button>Learn More</button>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

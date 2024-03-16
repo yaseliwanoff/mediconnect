@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'staff'
 ]
 
 MIDDLEWARE = [
@@ -63,11 +65,12 @@ WSGI_APPLICATION = 'mediconnect.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Сделать миграции
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'mediconnect',
-       'USER': 'postgres',
+       'NAME': 'mediconnect',  # БД
+       'USER': 'postgres',  # СуперЮзер для БД
        'PASSWORD': 'test',
        'HOST': 'localhost',
        'PORT': '5432',

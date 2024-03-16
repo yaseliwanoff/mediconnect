@@ -1,6 +1,31 @@
+/* ----------------------------------------------- используемые шрифты */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* ----------------------------------------------- используемые контейнеры */
+
+.container {
+    width: 1420px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    min-height: 100%;
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+
+/* ----------------------------------------------- настройки сайта */
+
+::selection {
+    background: rgba(255, 255, 255, 0);
+    color: rgb(240, 33, 33);
+}
+
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 *,*:before,*:after{
@@ -9,84 +34,1358 @@
     box-sizing: border-box;
 }
 
-nav,footer,header,aside{display: block;}
+nav,footer,header,aside{
+    display: block;
+}
 
 html,body {
-    width: 100%;
     font-size: 100%;
     line-height: 1;
     font-size: 14px;
-    -ms-text-size-adjust: 100 %;
+    -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
 
-@font-face {
-  font-family: "Abel-Regular";
-  src: url("fonts/Abel-Regular.ttf");
+/* ----------------------------------------------- хеадер сайта */
+
+/* @media(prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+} */
+
+header {
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    background-color: #fff;
+    height: 88px;
 }
 
-input,button,textarea{
-    {font-family: "Abel-Regular";}
+.header__logo {
+    float: left;
 }
 
-
-* {
-    font-family: "Abel-Regular";
-    text-decoration: none;
-}
-
-body {
-    max-width: 80%;
-    align-items: center;
-    margin: 0 auto; /* Это центрирование блока по горизонтали */
-}
-
-.header {
-        padding-top: 30px; /* Поля внутри блока */
-        padding-bottom: 30px;
-        display: flex; /* Включаем flexbox для выравнивания элементов */
-        justify-content: space-between; /* Распределение элементов по ширине */
-        align-items: center; /* Выравнивание по вертикали */
-}
-
-.header__logo img{
-    position: relative;
-    max-width: 200px;
+.header__logo img {
+    margin-top: 11px;
 }
 
 .header__links {
-    display: flex; /* Включаем flexbox для ссылок */
+    float: right;
+    display: flex;
+    align-items: center;
 }
 
 .header__links a {
-    color: #2d3436; /* Черный цвет текста */
-    text-decoration: none; /* Убираем подчеркивание */
-    margin-left: 20px; /* Отступ между ссылками */
-    font-size: 18px; /* Размер шрифта */
-    padding: 8px 16px; /* Поля внутри кнопки */
-    border-radius: 4px; /* Скругление углов */
-    transition: background-color 1s ease; /* Плавный переход цвета при наведении */
+    text-decoration: none;
+    list-style-type: none;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 14px;
+    color: rgb(109, 109, 109);
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.header__contact {
+    margin-right: 20px;
+}
+
+.header__doctors {
+    margin-right: 20px;
+}
+
+.header__links__allbuttons {
+    float: right;
+}
+
+.header__links,
+.header__links__allbuttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__login {
+    margin-right: 20px;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-decoration-line: underline;
+}
+
+.header__register__button {
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 14px 25px 14px 25px;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(250, 250, 250);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.header__register__button button:hover {
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 14px 25px 14px 25px;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(238, 238, 238);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.header__logo,
+.header__links {
+    /* padding: 25px 18px 0 0; */
+    margin-top: 25px;
 }
 
 .header__links a:hover {
-    color: #fa4b4b; /* Цвет фона при наведении */
-    transition: background-color 1s ease; /* Плавный переход цвета при наведении */
+    color: black;
+    transition: opacity 0.3s ease;
 }
+
+.header__register__button button:hover {
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 14px 25px 14px 25px;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(247, 247, 247);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.header__login__button {
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 14px 25px 14px 25px;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.header__login__button:hover {
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 14px 25px 14px 25px;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(249, 249, 249);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.header__appointments {
+    margin-right: 20px;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-decoration-line: underline;
+}
+
+/* ----------------------------------------------- контент сайта */
+
+.main__screen {
+    margin-top: 99px;
+}
+
+.main__screen__text {
+    display: flex;
+}
+
+.main__screen__text__title h1 {
+    color: rgb(0, 0, 0);
+    font-family: "Inter";
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 84px;
+    letter-spacing: -2px;
+    width: 1060px;
+}
+
+.main__screen_text__subtitle {
+    margin-left: 30px;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    width: 340px;
+}
+
+.main__screen__text__subtitle__button button {
+    cursor: pointer;
+    margin-top: 137px;
+    border-radius: 5px;
+    background: rgb(240, 33, 33);
+    width: 341px;
+    height: 57px;
+    border: 0;
+
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0px;
+    padding: 20px 92px 20px 92px;
+}
+
+.main__screen_image {
+    margin-top: 46px;
+}
+
+.img__fluid {
+    width: 100%;
+    max-width: 100%;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.main__screen__text__subtitle__button button:hover {
+    cursor: pointer;
+    margin-top: 137px;
+    border-radius: 5px;
+    background: rgb(212, 30, 30);
+    width: 341px;
+    height: 57px;
+    border: 0;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0px;
+    padding: 20px 92px 20px 92px;
+    transition: opacity 0.3s ease;
+}
+
+.main__allScreen__button button {
+    font-weight: 400;
+    font-family: "Inter";
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    height: 57px;
+    padding: 20px 92px 20px 92px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(255, 255, 255);
+    border: 0.2px solid rgb(236, 236, 236);
+    transition: 0.3s ease;
+}
+
+.main__allScreen__button button:hover {
+    font-weight: 400;
+    font-family: "Inter";
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    height: 57px;
+    padding: 20px 92px 20px 92px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(249, 249, 249);
+    border: 0.2px solid rgb(236, 236, 236);
+}
+
+.doctors__list {
+    margin-top: 125px;
+}
+
+.doctors__list__text__title {
+    width: 340px;
+    color: rgb(0, 0, 0);
+    font-family: "Inter";
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+}
+
+.doctors__list__text__subtitle {
+    margin-top: 10px;
+    width: 340px;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.doctors__list__info {
+    margin-top: 35px;
+    display: flex;
+}
+
+.doctors__list__info > *:not(:last-child) {
+    margin-right: 20px;
+}
+
+.doctors__list__info__card {
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    height: 500px;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.doctors__list__info__card__img img {
+    width: 280px;
+    height: 286px;
+    border-radius: 50%;
+}
+
+.doctors__list__info__card__text {
+    margin-top: 25px;
+}
+
+.doctors__list__info__card__text__firstnameANDlastname {
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.doctors__list__info__card__text__specialization {
+    margin-top: 7px;
+    color: rgb(144, 145, 145);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 14px;
+}
+
+.doctors__list__info__card:hover {
+    border-color: rgb(239, 239, 239);
+    background-color: rgb(255, 255, 255);
+}
+
+.doctors__list__info__card__text__button button {
+    margin-top: 50px;
+    cursor: pointer;
+    width: 283px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: rgb(240, 33, 33);
+    border: 0;
+}
+
+.doctors__list__info__card__text__button a {
+    text-decoration: none;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.doctors__list__info__card__text__button button:hover {
+    margin-top: 50px;
+    cursor: pointer;
+    width: 283px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: rgb(212, 30, 30);
+    transition: opacity 0.3s ease;
+    border: 0;
+}
+
+.callback__user__request {
+    margin-top: 125px;
+    width: 1420px;
+    height: 675px;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(236, 236, 236);
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-right: 30px;
+    z-index: 0;
+    position: relative;
+}
+
+.callback__user__request__text_title {
+    width: 340px;
+    color: rgb(0, 0, 0);
+    font-family: "Inter";
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+}
+
+.callback__user__request__text__subtitle {
+    margin-top: 10px;
+    width: 310px;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.callback__user__request__forms {
+    margin-top: 26px;
+}
+
+.callback__user__request__forms__UserName input {
+    width: 310px;
+    height: 50px;
+    align-items: center;
+    padding: 14px 25px 14px 25px;
+    border: 0;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.callback__user__request__forms__UserEmail input {
+    margin-top: 10px;
+    width: 310px;
+    height: 50px;
+    align-items: center;
+    padding: 14px 25px 14px 25px;
+    border: 0;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.callback__user__request__forms__UserPhoneNumber input {
+    margin-top: 10px;
+    width: 310px;
+    height: 50px;
+    align-items: center;
+    padding: 14px 25px 14px 25px;
+    border: 0;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.callback__user__request__forms__UserData input {
+    margin-top: 10px;
+    width: 310px;
+    height: 50px;
+    align-items: center;
+    padding: 14px 25px 14px 25px;
+    border: 0;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.callback__user__request__forms__UserName__form input {
+    margin-top: 10px;
+    width: 310px;
+    height: 50px;
+    align-items: center;
+    padding: 14px 25px 14px 25px;
+    border: 0;
+    box-sizing: border-box;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+
+    color: rgb(121, 121, 121);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.my-custom-class-no-label label {
+    display: none;
+}
+
+.callback__user__request__forms__button__description {
+    margin-top: 10px;
+    width: 310px;
+    color: rgb(191, 191, 191);
+    font-family: "Inter";
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.callback__user__request__forms__button button {
+    margin-top: 38px;
+    cursor: pointer;
+    width: 310px;
+    height: 57px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: rgb(240, 33, 33);
+    border: 0;
+
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.callback__user__request__forms__button button:hover {
+    width: 310px;
+    height: 57px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: rgb(212, 30, 30);
+    transition: opacity 0.3s ease;
+    border: 0;
+
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.callback__user__request__img {
+    z-index: 1;
+    position: absolute;
+    width: 892px;
+    height: 615px;
+}
+
+.callback__user__request__img img {
+    margin-left: 480px;
+    margin-top: -550px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* ----------------------------------------------- футер сайта */
 
 .footer {
-    background-color: #2d3436; /* Цвет фона футера */
-    color: #ffffff; /* Цвет текста */
-    padding: 20px 0; /* Внутренние отступы */
-    text-align: center; /* Выравнивание текста по центру */
+    margin-top: 125px;
+    background: rgb(24, 24, 24);
+    width: 100%;
+    height: 348px;
+    padding-top: 48px;
 }
 
-.footer a {
-    color: #ffffff; /* Цвет ссылок */
-    text-decoration: none; /* Убираем подчеркивание */
-    margin: 0 10px; /* Отступы между ссылками */
+.footer__inline__logo__text {
+    width: 137px;
+    color: rgb(116, 116, 116);
+    font-family: "Inter";
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 11px;
 }
 
-.footer a:hover {
-    color: #fa4b4b; /* Цвет ссылок при наведении */
+.footer__inline__navigation__text__title {
+    width: 340px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+}
+
+.footer__inline__navigation__text__subtitle {
+    margin-top: 10px;
+    width: 253px;
+    color: rgb(116, 116, 116);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.footer__inline__navigation__links {
+    margin-top: 35px;
+}
+
+.footer__inline__navigation__links a {
+    cursor: pointer;
+    color: rgb(116, 116, 116);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.footer__inline__navigation {
+    float: right;
+    margin-top: -50px;
+}
+
+/* ----------------------------------------------- контакты */
+
+.contact {
+    margin-top: 99px;
+}
+
+.map__location {
+    margin-top: 125px;
+}
+
+.all__contacts__socalmedia__phone {
+    display: flex;
+}
+
+.all__contacts__socalmedia__phone__text a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.all__contacts__socalmedia__instagram {
+    margin-top: 10px;
+    display: flex;
+}
+
+.all__contacts__socalmedia__instagram__text a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.all__contacts__socalmedia__facebook {
+    margin-top: 10px;
+    display: flex;
+}
+
+.all__contacts__socalmedia__facebook__text a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.all__contacts__socalmedia__location {
+    margin-top: 10px;
+    display: flex;
+}
+
+.all__contacts__socalmedia__location__text {
+    position: relative;
+    margin-top: -25px;
+    margin-left: 40px;
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.map__location {
+    float: right;
+    position: relative;
+    margin-top: -170px;
+}
+
+/* ----------------------------------------------- регистрация */
+
+.form-text-title {
+    font-family: "Inter";
+    font-weight: 700;
+    color: #000000;
+    font-size: 35px;
+}
+
+.form-text-subtitle,
+.signin {
+    margin-top: 15px;
+    line-height: 17px;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(50, 50, 50);
+}
+
+.signin {
+    text-align: center;
+}
+
+.reg-user {
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+}
+
+.signin-link a {
+    color: rgb(240, 33, 33);;
+}
+
+.form {
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 14px;
+    z-index: 1;
+    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.63);
+    margin-top: 99px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    border: 1px solid #dddddd;
+}
+
+.form-input {
+    position: relative;
+}
+
+.form-input input[type="text"],
+.form-input input[type="email"],
+.form-input input[type="password"],
+.form-input input[type="tel"],
+.form-input input[type="date"] {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+    font-family: "Iner";
+    font-weight: 400;
+}
+  
+/* .form-input input[type="text"]:focus,
+.form-input input[type="email"]:focus,
+.form-input input[type="password"]:focus,
+.form-input input[type="tel"]:focus,
+.form-input input[type="date"]:focus {
+    outline: none;
+    border-bottom: 1px solid #1e90ff;
+} */
+  
+.placeholder-text {
+    position: absolute;
+    top: 27px;
+    left: 10px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    font-size: 13px;
+    color: #b4b4b4;
+    font-family: "Inter";
+    font-weight: 400;
+}
+
+.form-input input[type="text"]:focus + .placeholder-text,
+.form-input input[type="email"]:focus + .placeholder-text,
+.form-input input[type="password"]:focus + .placeholder-text,
+.form-input input[type="tel"]:focus + .placeholder-text,
+.form-input input[type="date"]:focus + .placeholder-text,
+.form-input input[type="text"]:valid + .placeholder-text,
+.form-input input[type="email"]:valid + .placeholder-text,
+.form-input input[type="password"]:valid + .placeholder-text,
+.form-input input[type="tel"]:valid + .placeholder-text,
+.form-input input[type="date"]:valid + .placeholder-text {
+    top: 40px;
+    left: 15;
+    font-size: 10px;
+    color: #838383;
+    font-family: "Inter";
+    font-weight: 600;
+}
+
+
+.form-input {
+    position: relative;
+}
+
+.form-input input {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+}
+
+.form-input input:focus::placeholder {
+    color: rgb(70, 70, 70);
+    transform: translateY(14px);
+    transition: all 0.3s ease;
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.form-input input:focus + .placeholder-text {
+    color: #cc1b1b;
+}
+
+.form-input input:not(:focus):valid + .placeholder-text {
+    color: #2f7e48;
+}
+
+.reg-user {
+    margin-top: 10px;
+    background-color: #ffffff;
+    color: #4f4f4f;
+    width: 100%;
+    height: 45px;
+    padding: 10px 10px 10px 10px;
+    outline: 0;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 10px;
+}
+
+.submit {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 57px;
+    background: rgb(240, 33, 33);
+    border-radius: 10px;
+    border: 0;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.submit:hover {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 57px;
+    background: rgb(205, 27, 27);
+    border-radius: 10px;
+    border: 0;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.checking-have-account-or-not a {
+    color: red;
+    text-decoration: underline;
+}
+
+.form-input input[type="date"]::placeholder {
+    content: ""; /* Убираем текст placeholder */
+}
+
+/* ----------------------------------------------- авторизация */
+
+.form-login {
+    z-index: 1;
+    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.63);
+    margin-top: 99px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    border: 1px solid #dddddd;
+}
+
+.form-text-title-login {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-text-subtitle-login {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+.form-input-login {
+    position: relative;
+}
+
+.form-input-login input[type="text"],
+.form-input-login input[type="email"],
+.form-input-login input[type="password"] {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+}
+
+/* .form-input-login input[type="text"]:focus,
+.form-input-login input[type="email"]:focus,
+.form-input-login input[type="password"]:focus {
+    outline: none;
+    border-bottom: 1px solid #1e90ff;
+} */
+
+.placeholder-text-login {
+    position: absolute;
+    top: 17px;
+    left: 10px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    font-size: 13px;
+    color: #b4b4b4;
+    font-family: "Inter";
+    font-weight: 400;
+}
+
+.form-input-login input[type="text"]:focus + .placeholder-text-login,
+.form-input-login input[type="email"]:focus + .placeholder-text-login,
+.form-input-login input[type="password"]:focus + .placeholder-text-login,
+.form-input-login input[type="text"]:valid + .placeholder-text-login,
+.form-input-login input[type="email"]:valid + .placeholder-text-login,
+.form-input-login input[type="password"]:valid + .placeholder-text-login {
+    top: 27px;
+    left: 10px;
+    font-size: 10px;
+    color: #838383;
+    font-family: "Inter";
+    font-weight: 600;
+}
+
+.form-input-login input:focus + .placeholder-text-login {
+    color: #cc1b1b;
+}
+
+.form-input-login input:not(:focus):valid + .placeholder-text-login {
+    color: #2f7e48;
+}
+
+.form-input-login input:focus::placeholder {
+    color: rgb(70, 70, 70);
+    transform: translateY(14px);
+    transition: all 0.3s ease;
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.reg-user {
+    margin-top: 10px;
+    background-color: #ffffff;
+    color: #4f4f4f;
+    width: 100%;
+    height: 45px;
+    padding: 10px 10px 10px 10px;
+    outline: 0;
+    border: 0.2px solid rgb(213, 213, 213);
+    border-radius: 10px;
+}
+
+.submit-login {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 57px;
+    background: rgb(240, 33, 33);
+    border-radius: 10px;
+    border: 0;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.submit-login:hover {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 57px;
+    background: rgb(205, 27, 27);
+    border-radius: 10px;
+    border: 0;
+    padding: 20px 92px 20px 92px;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: opacity 0.3s ease;
+}
+
+.checking-have-account-or-not-login {
+    text-align: center;
+}
+
+.signin-login {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+.signin-link-login {
+    color: red;
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------- Лист докторов */
+
+.button {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: "Inter";
+    transition: all .2s;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(240, 33, 33);
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
+
+.arr-1 path {
+    fill: rgb(255, 255, 255);
+}
+  
+.button:hover {
+    background: rgb(214, 28, 28);
+}
+  
+.button > svg {
+    width: 25px;
+    margin-left: 10px;
+    transition: transform .3s ease-in-out;
+}
+  
+.button:hover svg {
+    transform: translateX(5px);
+}
+
+
+/* .filter {
+    font-family: "Inter";
+    font-weight: 400;
+    color: rgb(144, 145, 145);
+    width: 100px;
+} */
+
+.doctor__form {
+    display: flex;
+    align-items: center;
+}
+
+.doctor__list__button {
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+label[for="id_specialization"] {
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+}
+
+select[id="id_specialization"] {
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 14px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 12px 5px;
+}
+
+.doctor__list {
+    margin-top: 99px;
+}
+
+.doctor__list h1 {
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 30px;
+
+    height: 40px;
+}
+
+.doctors {
+    display: block;
+    margin-top: 60px;
+}
+
+.doctor__list__button button {
+    margin-top: 10px;
+    cursor: pointer;
+    width: 106px;
+    height: 45px;
+    padding: 13px 25px 14px 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(243, 33, 33);
+
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    transition: 0.2s ease;
+}
+
+.doctor__list__button button:hover {
+    margin-top: 10px;
+    cursor: pointer;
+    width: 106px;
+    height: 45px;
+    padding: 13px 25px 14px 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: rgb(199, 30, 30);
+
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.doctor__card {
+    margin-right: 20px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    float: left;
+    box-sizing: border-box;
+    margin-top: 20px;
+
+    width: calc(25% - 20px);
+    height: 484px;
+    box-sizing: border-box;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 20px;
+    background: rgb(250, 250, 250);
+    transition: opacity 2.2s ease;
+}
+
+.doctor__list__img img {
+    width: 280px;
+    height: 286px;
+    border-radius: 20px;
+}
+
+.doctors__text__name {
+    margin-top: 15px;
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.doctors__text__specialization {
+    margin-top: 5px;
+    color: rgb(144, 145, 145);
+    font-family: "Inter";
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 12px;
+}
+
+.doctor__list__button__doctor button {
+    color: white;
+    cursor: pointer;
+    margin-top: 35px;
+    width: 100%;
+    height: 57px;
+    padding: 20px 92px 20px 92px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(240, 33, 33);
+    transition: 0.3s ease all;
+}
+
+.doctor__list__button__doctor a {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-decoration: none;
+}
+
+.doctor__list__button__doctor button:hover {
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    height: 57px;
+    padding: 20px 92px 20px 92px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(206, 28, 28);
+}
+
+/* ----------------------------------------------- Личный профиль */
+
+.specialization-field {
+    width: 50%;
+}
+
+.doc__info {
+    margin-top: 99px;
+}
+
+.doc__info__img img {
+    width: 280px;
+    height: 286px;
+    border-radius: 20px;
+}
+
+.doc__info__text {
+    position: relative;
+    top: -300px;
+    margin-top: 15px;
+    float: right;
+    margin-right: 640px;
+}
+
+.doc__info__name {
+    color: rgb(50, 50, 50);
+    font-family: "Inter";
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.doc__info__about {
+    margin-top: 15px;
+    width: 450px;
+    color: rgb(144, 145, 145);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15px;
+}
+
+.doc__info__experience {
+    margin-top: 15px;
+    width: 450px;
+    color: rgb(144, 145, 145);
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15px;
+}
+
+.formis__text {
+    margin-top: 65px;
+    font-family: "Inter";
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/* .forms {
+    position: relative;
+    top: -200px;
+} */
+
+.formis {
+    position: absolute;
+    margin-top: -350px;
+    margin-left: 990px;
 }

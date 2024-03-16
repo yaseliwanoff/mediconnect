@@ -1,7 +1,53 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block title %}Contacts{% endblock %}
 
 {% block body %}
+
+<div class="wrapper">
+    <div class="contact container">
+        <div class="all__contacts">
+            <div class="all__contacts__socalmedia">
+                <div class="all__contacts__socalmedia__phone">
+                    <div class="all__contacts__socalmedia__phone__svg">
+                        <img src="{% static '/main/img/tel.svg' %}" alt="phone icon">
+                    </div>
+                    <div class="all__contacts__socalmedia__phone__text">
+                        <a href="tel:+9957777777">+9957777777</a>
+                    </div>
+                </div>
+                <div class="all__contacts__socalmedia__instagram">
+                    <div class="all__contacts__socalmedia__instagram__svg">
+                        <img src="{% static '/main/img/inst.svg' %}" alt="instagram icon">
+                    </div>
+                    <div class="all__contacts__socalmedia__instagram__text">
+                        <a href="https://www.instagram.com/example" target="_blank">@example</a>
+                    </div>
+                </div>
+                <div class="all__contacts__socalmedia__facebook">
+                    <div class="all__contacts__socalmedia__facebook__svg">
+                        <img src="{% static '/main/img/fc.svg' %}" alt="facebook icon">
+                    </div>
+                    <div class="all__contacts__socalmedia__facebook__text">
+                        <a href="https://www.facebook.com/example_example" target="_blank">example_example</a>
+                    </div>
+                </div>
+                <div class="all__contacts__socalmedia__location">
+                    <div class="all__contacts__socalmedia__location__svg">
+                        <img src="{% static '/main/img/locs.svg' %}" alt="location icon">
+                    <div class="all__contacts__socalmedia__location__text">
+                        Adress Georgia, Batumi, Example, 10 <br>
+                        Working days: <b>9:00 - 20:00</b> <br>
+                        Holidays: <b>9:00-17:00</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map__location">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443.1323247656305!2d41.68576608442678!3d41.65515719625818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4067887878e5d2c5%3A0xa16331c38a88eeb9!2sLUKITO%20APARTMENT!5e0!3m2!1sru!2sru!4v1708852996118!5m2!1sru!2sru" width="700" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

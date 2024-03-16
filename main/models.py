@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
 
 
 class SpecializationCategory(models.Model):
@@ -9,13 +10,6 @@ class SpecializationCategory(models.Model):
         return self.specialization_title
 
 
-class AppointmentTime(models.Model):
-    appointment_time = models.CharField(verbose_name='Available time')
-
-    def __str__(self):
-        return self.appointment_time
-
-
 class Doctor(models.Model):
     photo = models.ImageField(verbose_name='Photo')
     first_name = models.CharField(verbose_name='First name', max_length=80)
@@ -23,19 +17,28 @@ class Doctor(models.Model):
     specialization = models.ForeignKey(SpecializationCategory, on_delete=models.CASCADE, related_name='doctors')
     about = models.TextField(blank=True, verbose_name='Information about doctor', max_length=600)
     experience = models.TextField(blank=True, verbose_name='Experience')
-    price = models.IntegerField(default=None, blank=True, verbose_name='Visit price')
+    visit_price = models.IntegerField(verbose_name='Visit price')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
 
-class Appointment(models.Model):
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    appointment_datetime = models.ForeignKey(AppointmentTime, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class AppointmentTime(models.Model):
+    appointment_time = models.CharField(max_length=10, verbose_name='Appointment times', unique=True)
 
     def __str__(self):
-        return f"Appointment with {self.doctor} on {self.appointment_datetime}"
+        return f"{self.appointment_time}"
+
+
+class Appointment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='appointments')
+    appointment_day = models.DateField(default=timezone.now)
+    appointment_time = models.ForeignKey(AppointmentTime, on_delete=models.CASCADE)
+    time_ordered = models.DateTimeField(default=timezone.now, blank=True)
+
+    def __str__(self):
+        return f"{self.doctor} | day: {self.appointment_day} | time: {self.appointment_time} | visit price: {self.doctor.visit_price} $"
 
 
 class Callback(models.Model):
@@ -46,4 +49,3 @@ class Callback(models.Model):
 
     def __str__(self):
         return f"Callback to {self.name}"
-

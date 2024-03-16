@@ -1,0 +1,15 @@
+{% extends 'staff/staff-base.html' %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block body %}
+
+<a href="#">| Monthly reports |</a>
+<a href="#"> Doctors reports |</a>
+
+<p>Total number of appointments: {{ total_appointments }}</p>
+<p>Total revenues: {{ total_revenue_all }}$</p>
+<p>Average appointments per day: {{ average_appointments_per_day }}</p>
+<p>Average revenues per day: {{ average_revenue_per_day }}$</p>
+<p>Average callbacks per day: {{ average_callback_per_day }}</p>
+{% endblock %}
